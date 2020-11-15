@@ -70,7 +70,7 @@ class Auth extends CI_Controller
     {
 
         $this->form_validation->set_rules('name', 'Nama', 'required');
-        $this->form_validation->set_rules('telepon_users', 'Telepon Telah Terdaftar', 'required|is_unique[tbl_users.telepon_users]');
+        // $this->form_validation->set_rules('telepon_users', 'Telepon Telah Terdaftar', 'required|is_unique[tbl_users.telepon_users]');
         $this->form_validation->set_rules('email', 'Email Telah Terdaftar', 'required|is_unique[tbl_users.email]|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
         $this->form_validation->set_rules('confrim_password', 'Konfirmasi Password', 'required|trim|matches[password]');
@@ -88,8 +88,6 @@ class Auth extends CI_Controller
             $email = $this->input->post('email');
             $password = $this->input->post('password');
             $pass = password_hash($password, PASSWORD_DEFAULT);
-            $rt = $this->input->post('rt_users');
-            $alamat_users = $this->input->post('alamat_users');
             $telepon_users = $this->input->post('telepon_users');
             // $level = $this->input->post('level');
             date_default_timezone_set("ASIA/JAKARTA");
@@ -97,10 +95,8 @@ class Auth extends CI_Controller
                 'name' => $name,
                 'email' => $email,
                 'password' => $pass,
-                'rt_users' => $rt,
-                'alamat_users' => $alamat_users,
                 'telepon_users' => $telepon_users,
-                'level' => 'nasabah',
+                'level' => 'admin',
                 'time_create_users' => date('Y-m-d H:i:s')
             ];
 
@@ -110,7 +106,7 @@ class Auth extends CI_Controller
             if ($insert) {
 
                 $this->session->set_flashdata('success_login', 'Sukses, Anda telah terdaftar.');
-                redirect('/pendaftaran');
+                redirect('/auth');
             }
         }
     }
