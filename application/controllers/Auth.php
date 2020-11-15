@@ -13,9 +13,9 @@ class Auth extends CI_Controller
             'title' => 'Sistem Informasi Bank Sampah Enviro 18',
         ];
 
-        $this->load->view('templates/auth_header', $data);
+        $this->load->view('layouts/header', $data);
         $this->load->view('auth/login');
-        $this->load->view('templates/auth_footer');
+        $this->load->view('layouts/footer');
     }
 
     public function loginForm()
@@ -50,7 +50,7 @@ class Auth extends CI_Controller
                     //$email = $this->session->userdata('email');
                     $data = array('time_login_users' => date('Y-m-d H:i:s'));
                     $this->Auth_model->logout($data, $email);
-                    redirect('Admin');
+                    redirect('Admin/Dashboard');
                 } else {
 
                     $this->session->set_flashdata('error_login', 'Email atau password yang Anda masukan salah.');
