@@ -96,7 +96,7 @@ class Auth extends CI_Controller
                 'email' => $email,
                 'password' => $pass,
                 'telepon_users' => $telepon_users,
-                'level' => 'admin',
+                'level' => 'pasien',
                 'time_create_users' => date('Y-m-d H:i:s')
             ];
 
@@ -105,7 +105,7 @@ class Auth extends CI_Controller
 
             if ($insert) {
 
-                $this->session->set_flashdata('success_login', 'Sukses, Anda telah terdaftar.');
+                $this->session->set_flashdata('success_login', 'Sukses, Anda telah terdaftar Silhakan login.');
                 redirect('/auth');
             }
         }

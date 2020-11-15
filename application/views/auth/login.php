@@ -22,6 +22,34 @@
                             <h4> register </h4>
                         </a>
                     </div>
+                    <?php $errors = $this->session->flashdata('errors'); ?>
+                    <?php if (!empty($errors)) : ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger text-center">
+                                    <?php foreach ($errors as $key => $error) { ?>
+                                        <?php echo "$error<br>"; ?>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php elseif ($msg = $this->session->flashdata('error_login')) : ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger text-center">
+                                    <?= $msg ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php elseif ($msg = $this->session->flashdata('success_login')) : ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-success text-center">
+                                    <?= $msg ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     <div class="tab-content">
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
@@ -44,10 +72,11 @@
                         <div id="lg2" class="tab-pane">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="Username">
-                                        <input type="password" name="user-password" placeholder="Password">
-                                        <input name="user-email" placeholder="Email" type="email">
+                                    <form action="<?= base_url('auth/registerForm') ?>" method="post">
+                                        <input type="text" name="name" placeholder="nama lengkap">
+                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="password" name="confrim_password" placeholder="Comfirm Password">
+                                        <input name="email" placeholder="Email" type="email">
                                         <div class="button-box">
                                             <button type="submit"><span>Register</span></button>
                                         </div>
