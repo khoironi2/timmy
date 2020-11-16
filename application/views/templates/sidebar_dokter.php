@@ -52,7 +52,7 @@
                     <li>
                         <a href="<?= base_url('dokter/layanan_dokter/jadwal_dokter'); ?>">
                             <i class="metismenu-icon fas fa-calendar-alt"></i>
-                            Jadwal Dokter
+                            Jadwal Saya
                         </a>
                     </li>
                     <li>
