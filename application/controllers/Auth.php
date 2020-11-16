@@ -50,7 +50,7 @@ class Auth extends CI_Controller
                     //$email = $this->session->userdata('email');
                     $data = array('time_login_users' => date('Y-m-d H:i:s'));
                     $this->Auth_model->logout($data, $email);
-                    redirect('Admin/Dashboard');
+                    redirect('admin/dashboard');
                 } else {
 
                     $this->session->set_flashdata('error_login', 'Email atau password yang Anda masukan salah.');

@@ -55,7 +55,7 @@
                             <div class="login-form-container">
                                 <div class="login-register-form">
                                     <form action="<?= base_url('auth/loginForm') ?>" method="post">
-                                        <input type="text" name="email" id="email" placeholder="Username">
+                                        <input type="text" name="email" id="email" placeholder="Email">
                                         <input type="password" name="password" id="password" placeholder="Password">
                                         <div class="button-box">
                                             <!-- <div class="login-toggle-btn"> -->

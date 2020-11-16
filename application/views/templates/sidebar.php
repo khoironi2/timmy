@@ -36,9 +36,17 @@
                 <ul class="vertical-nav-menu">
                     <li class="app-sidebar__heading">Dashboards</li>
                     <li>
-                        <a href="index.html" class="mm-active">
+                        <a href="<?= base_url('admin/dashboard') ?>">
                             <i class="metismenu-icon fas fa-tachometer-alt"></i>
                             Dashboard
+                        </a>
+                    </li>
+
+                    <li class="app-sidebar__heading">Settings</li>
+                    <li>
+                        <a href="<?= base_url('admin/settings/'); ?>">
+                            <i class="metismenu-icon fas fa-user"></i>
+                            Profile
                         </a>
                     </li>
                 </ul>
