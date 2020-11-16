@@ -1,6 +1,6 @@
 <?php
 
-class Users_model extends CI_model
+class Jadwal_dokter_model extends CI_model
 {
     public function getAllUsers()
     {

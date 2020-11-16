@@ -29,6 +29,33 @@ class Jadwal_dokter extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
         $this->load->view('admin/layanan_dokter/jadwal_dokter/index');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function insert()
+    {
+        $this->form_validation->set_rules('hari', 'hari', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $errors = $this->form_validation->error_array();
+            $this->session->set_flashdata('errors', $errors);
+            $this->session->set_flashdata('input', $this->input->post());
+            redirect('admin/create_nasabah');
+        } else {
+            $hari = $this->input->post('hari');
+            $jam_mulai = $this->input->post('jam_mulai');
+            $jam_selesai = $this->input->post('jam_selesai');
+            $id_dokter = $this->input->post('id_dokter');
+            $data = [
+                'hari' => $hari,
+                'jam_mulai' => $jam_mulai,
+                'jam_selesai' => $jam_selesai,
+                'id_dokter' => $id_dokter
+            ];
+            $insert = $this->Jadwal_dokter_model->insert("tbl_jadwal_dokter", $data);
+            if ($insert) {
+                $this->session->set_flashdata('success_login', 'Sukses, Data Berhasil Ditambah.');
+                redirect('admin/layanan_dokter/jadwal_dokter');
+            }
+        }
     }
 }
