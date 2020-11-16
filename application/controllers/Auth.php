@@ -13,9 +13,9 @@ class Auth extends CI_Controller
             'title' => 'Sistem Informasi Bank Sampah Enviro 18',
         ];
 
-        $this->load->view('templates/auth_header', $data);
+        $this->load->view('layouts/header', $data);
         $this->load->view('auth/login');
-        $this->load->view('templates/auth_footer');
+        $this->load->view('layouts/footer');
     }
 
     public function loginForm()
