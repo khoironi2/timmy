@@ -1,4 +1,3 @@
-
 <div class="app-main">
     <div class="app-sidebar sidebar-shadow">
         <div class="app-header__logo">
@@ -30,7 +29,7 @@
                     </span>
                 </button>
             </span>
-        </div>    
+        </div>
         <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
                 <ul class="vertical-nav-menu">
@@ -42,7 +41,59 @@
                         </a>
                     </li>
 
+                    <li class="app-sidebar__heading">Layanan Pasien</li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-pen-square"></i>
+                            Antrian Pasien
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Layanan Dokter</li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-calendar-alt"></i>
+                            Jadwal Dokter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-syringe"></i>
+                            Vaksin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-lungs-virus"></i>
+                            Steril
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Pets Care</li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-paw"></i>
+                            Groming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-door-open"></i>
+                            Penitipan
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Riwayat</li>
+                    <li>
+                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                            <i class="metismenu-icon fas fa-user-md"></i>
+                            Riwayat Rekam Medis
+                        </a>
+                    </li>
                     <li class="app-sidebar__heading">Settings</li>
+                    <li>
+                        <a href="<?= base_url('admin/about/'); ?>">
+                            <i class="metismenu-icon fas fa-home"></i>
+                            About
+                        </a>
+                    </li>
                     <li>
                         <a href="<?= base_url('admin/settings/'); ?>">
                             <i class="metismenu-icon fas fa-user"></i>
@@ -52,4 +103,4 @@
                 </ul>
             </div>
         </div>
-    </div>    
+    </div>
