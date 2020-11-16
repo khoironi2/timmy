@@ -95,7 +95,6 @@ class Auth extends CI_Controller
                 'name' => $name,
                 'email' => $email,
                 'password' => $pass,
-                'telepon_users' => $telepon_users,
                 'level' => 'pasien',
                 'time_create_users' => date('Y-m-d H:i:s')
             ];
