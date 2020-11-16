@@ -29,6 +29,6 @@ class Jadwal_dokter extends CI_Controller
         $this->load->view('templates/topbar_pasien');
         $this->load->view('templates/sidebar_pasien');
         $this->load->view('pasien/layanan_dokter/jadwal_dokter/index');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer_pasien');
     }
 }

@@ -37,7 +37,7 @@ class Profile extends CI_Controller
             $this->load->view('templates/topbar_dokter');
             $this->load->view('templates/sidebar_dokter');
             $this->load->view('dokter/profile/index');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer_dokter');
         } else {
             $data = [
                 'name' => $this->input->post('name'),

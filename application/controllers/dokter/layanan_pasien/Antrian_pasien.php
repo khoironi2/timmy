@@ -29,6 +29,6 @@ class Antrian_pasien extends CI_Controller
         $this->load->view('templates/topbar_dokter');
         $this->load->view('templates/sidebar_dokter');
         $this->load->view('dokter/layanan_pasien/antrian_pasien/index');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer_dokter');
     }
 }

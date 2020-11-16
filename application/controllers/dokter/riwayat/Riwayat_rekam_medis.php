@@ -29,6 +29,6 @@ class Riwayat_rekam_medis extends CI_Controller
         $this->load->view('templates/topbar_dokter');
         $this->load->view('templates/sidebar_dokter');
         $this->load->view('dokter/riwayat/riwayat_rekam_medis/index');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer_dokter');
     }
 }
