@@ -21,7 +21,8 @@ class Groming extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Groming'
+            'halaman' => 'Data | Groming',
+            'icon' => 'fas fa-paw'
         ];
 
         $this->load->view('templates/header', $data);

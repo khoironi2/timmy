@@ -21,7 +21,8 @@ class Riwayat_rekam_medis extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Riwayat Rekam Medis'
+            'halaman' => 'Data | Riwayat Rekam Medis',
+            'icon' => 'fas fa-user-md'
         ];
 
         $this->load->view('templates/header', $data);

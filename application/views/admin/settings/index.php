@@ -4,7 +4,7 @@
             <div class="page-title-wrapper">
                 <div class="page-title-heading">
                     <div class="page-title-icon">
-                        <i class="fas fa-user icon-gradient bg-mean-fruit">
+                        <i class="metismenu-icon <?= $icon; ?> icon-gradient bg-mean-fruit"></i>
                         </i>
                     </div>
                     <div><?= $halaman; ?></div>

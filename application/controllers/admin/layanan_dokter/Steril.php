@@ -21,7 +21,8 @@ class Steril extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Steril'
+            'halaman' => 'Data | Steril',
+            'icon' => 'fas fa-lungs-virus'
         ];
 
         $this->load->view('templates/header', $data);

@@ -7,6 +7,7 @@ class Settings extends CI_Controller
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Setings',
+            'icon' => 'fas fa-hammer',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
         ];
 

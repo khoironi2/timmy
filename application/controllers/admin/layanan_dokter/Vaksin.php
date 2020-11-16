@@ -21,7 +21,8 @@ class Vaksin extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Vaksin'
+            'halaman' => 'Data | Vaksin',
+            'icon' => 'fas fa-syringe'
         ];
 
         $this->load->view('templates/header', $data);

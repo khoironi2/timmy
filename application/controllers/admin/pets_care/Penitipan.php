@@ -21,7 +21,8 @@ class Penitipan extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Penitipan'
+            'halaman' => 'Data | Penitipan',
+            'icon' => 'fas fa-door-open'
         ];
 
         $this->load->view('templates/header', $data);
