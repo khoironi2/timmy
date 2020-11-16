@@ -11,8 +11,8 @@ class Dashboard extends CI_Controller
             // session check logic here...change this accordingly
             if ($this->CI->session->userdata['level'] == 'dokter') {
                 redirect('dokter/dashboard');
-            } elseif ($this->CI->session->userdata['level'] == 'pasien') {
-                redirect('pasien/dashboard');
+            } elseif ($this->CI->session->userdata['level'] == 'admin') {
+                redirect('admin/dashboard');
             }
         }
     }
@@ -25,7 +25,7 @@ class Dashboard extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/sidebar_pasien');
         $this->load->view('admin/dashboard/index');
         $this->load->view('templates/footer');
     }

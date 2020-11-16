@@ -26,15 +26,15 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="Username">
-                                        <input type="password" name="user-password" placeholder="Password">
+                                    <form action="<?= base_url('auth/loginForm') ?>" method="post">
+                                        <input type="text" name="email" id="email" placeholder="Username">
+                                        <input type="password" name="password" id="password" placeholder="Password">
                                         <div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input type="checkbox">
-                                                <label>Remember me</label>
-                                                <a href="#">Forgot Password?</a>
-                                            </div>
+                                            <!-- <div class="login-toggle-btn"> -->
+                                            <!-- <input type="checkbox"> -->
+                                            <!-- <label>Remember me</label> -->
+                                            <!-- <a href="#">Forgot Password?</a> -->
+                                            <!-- </div> -->
                                             <button type="submit"><span>Login</span></button>
                                         </div>
                                     </form>

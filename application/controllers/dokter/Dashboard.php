@@ -9,14 +9,13 @@ class Dashboard extends CI_Controller
         $this->CI = &get_instance();
         if ($this->CI->router->fetch_class() != "login") {
             // session check logic here...change this accordingly
-            if ($this->CI->session->userdata['level'] == 'dokter') {
-                redirect('dokter/dashboard');
+            if ($this->CI->session->userdata['level'] == 'admin') {
+                redirect('admin/dashboard');
             } elseif ($this->CI->session->userdata['level'] == 'pasien') {
                 redirect('pasien/dashboard');
             }
         }
     }
-
     public function index()
     {
         $data = [
@@ -25,7 +24,7 @@ class Dashboard extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/sidebar_dokter');
         $this->load->view('admin/dashboard/index');
         $this->load->view('templates/footer');
     }
