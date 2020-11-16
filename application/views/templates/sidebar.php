@@ -89,13 +89,13 @@
                     </li>
                     <li class="app-sidebar__heading">Settings</li>
                     <li>
-                        <a href="<?= base_url('admin/about/'); ?>">
+                        <a href="<?= base_url('admin/settings/'); ?>">
                             <i class="metismenu-icon fas fa-home"></i>
                             About
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/settings/'); ?>">
+                        <a href="<?= base_url('admin/profle/'); ?>">
                             <i class="metismenu-icon fas fa-user"></i>
                             Profile
                         </a>

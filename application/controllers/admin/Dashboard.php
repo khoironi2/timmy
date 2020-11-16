@@ -21,7 +21,8 @@ class Dashboard extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Dashboard'
+            'halaman' => 'Data | Dashboard',
+            'icon' => 'fas fa-tachometer-alt'
         ];
 
         $this->load->view('templates/header', $data);

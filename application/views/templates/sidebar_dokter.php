@@ -35,9 +35,49 @@
                 <ul class="vertical-nav-menu">
                     <li class="app-sidebar__heading">Dashboards</li>
                     <li>
-                        <a href="index.html" class="mm-active">
+                        <a href="<?= base_url('dokter/dashboard') ?>">
                             <i class="metismenu-icon fas fa-tachometer-alt"></i>
                             Dashboard
+                        </a>
+                    </li>
+
+                    <li class="app-sidebar__heading">Layanan Pasien</li>
+                    <li>
+                        <a href="<?= base_url('dokter/layanan_pasien/antrian_pasien'); ?>">
+                            <i class="metismenu-icon fas fa-pen-square"></i>
+                            Antrian Pasien
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Layanan Dokter</li>
+                    <li>
+                        <a href="<?= base_url('dokter/layanan_dokter/jadwal_dokter'); ?>">
+                            <i class="metismenu-icon fas fa-calendar-alt"></i>
+                            Jadwal Dokter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('dokter/layanan_dokter/vaksin'); ?>">
+                            <i class="metismenu-icon fas fa-syringe"></i>
+                            Vaksin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('dokter/layanan_dokter/steril'); ?>">
+                            <i class="metismenu-icon fas fa-lungs-virus"></i>
+                            Steril
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Riwayat</li>
+                    <li>
+                        <a href="<?= base_url('dokter/riwayat/riwayat_rekam_medis'); ?>">
+                            <i class="metismenu-icon fas fa-user-md"></i>
+                            Riwayat Rekam Medis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('dokter/profile/'); ?>">
+                            <i class="metismenu-icon fas fa-user"></i>
+                            Profile
                         </a>
                     </li>
                 </ul>

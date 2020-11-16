@@ -35,9 +35,62 @@
                 <ul class="vertical-nav-menu">
                     <li class="app-sidebar__heading">Dashboards</li>
                     <li>
-                        <a href="index.html" class="mm-active">
+                        <a href="<?= base_url('pasien/dashboard') ?>">
                             <i class="metismenu-icon fas fa-tachometer-alt"></i>
                             Dashboard
+                        </a>
+                    </li>
+
+                    <li class="app-sidebar__heading">Layanan Pasien</li>
+                    <li>
+                        <a href="<?= base_url('pasien/layanan_pasien/antrian_pasien'); ?>">
+                            <i class="metismenu-icon fas fa-pen-square"></i>
+                            Antrian Saya
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Layanan Dokter</li>
+                    <li>
+                        <a href="<?= base_url('pasien/layanan_dokter/jadwal_dokter'); ?>">
+                            <i class="metismenu-icon fas fa-calendar-alt"></i>
+                            Jadwal Dokter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('pasien/layanan_dokter/vaksin'); ?>">
+                            <i class="metismenu-icon fas fa-syringe"></i>
+                            Vaksin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('pasien/layanan_dokter/steril'); ?>">
+                            <i class="metismenu-icon fas fa-lungs-virus"></i>
+                            Steril
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Pets Care</li>
+                    <li>
+                        <a href="<?= base_url('pasien/pets_care/groming'); ?>">
+                            <i class="metismenu-icon fas fa-paw"></i>
+                            Groming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('pasien/pets_care/penitipan'); ?>">
+                            <i class="metismenu-icon fas fa-door-open"></i>
+                            Penitipan
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Riwayat</li>
+                    <li>
+                        <a href="<?= base_url('pasien/riwayat/riwayat_rekam_medis'); ?>">
+                            <i class="metismenu-icon fas fa-user-md"></i>
+                            Riwayat Rekam Medis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('pasien/profile/'); ?>">
+                            <i class="metismenu-icon fas fa-user"></i>
+                            Profile
                         </a>
                     </li>
                 </ul>

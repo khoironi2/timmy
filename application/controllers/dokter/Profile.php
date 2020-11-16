@@ -9,8 +9,8 @@ class Profile extends CI_Controller
         $this->CI = &get_instance();
         if ($this->CI->router->fetch_class() != "login") {
             // session check logic here...change this accordingly
-            if ($this->CI->session->userdata['level'] == 'dokter') {
-                redirect('dokter/dashboard');
+            if ($this->CI->session->userdata['level'] == 'admin') {
+                redirect('admin/dashboard');
             } elseif ($this->CI->session->userdata['level'] == 'pasien') {
                 redirect('pasien/dashboard');
             }
@@ -34,9 +34,9 @@ class Profile extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('templates/topbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('admin/profile/index');
+            $this->load->view('templates/topbar_dokter');
+            $this->load->view('templates/sidebar_dokter');
+            $this->load->view('dokter/profile/index');
             $this->load->view('templates/footer');
         } else {
             $data = [
