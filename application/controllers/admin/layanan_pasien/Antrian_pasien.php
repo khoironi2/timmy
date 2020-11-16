@@ -24,6 +24,7 @@ class Antrian_pasien extends CI_Controller
             'halaman' => 'Data | Antrian Pasien',
             'icon' => 'fas fa-pen-square',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'antrian' => $this->Pasien_model->getAllAntrianPasien(),
         ];
 
         $this->load->view('templates/header', $data);
