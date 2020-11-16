@@ -1,6 +1,6 @@
 <?php
 
-class Dashboard extends CI_Controller
+class Penitipan extends CI_Controller
 {
     public function __construct()
     {
@@ -21,13 +21,13 @@ class Dashboard extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Dashboard'
+            'halaman' => 'Data | Penitipan'
         ];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('admin/dashboard/index');
+        $this->load->view('admin/pets_care/penitipan/index');
         $this->load->view('templates/footer');
     }
 }

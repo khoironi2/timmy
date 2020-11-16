@@ -1,12 +1,12 @@
 <?php
 
-class Settings extends CI_Controller
+class Profile extends CI_Controller
 {
     public function index()
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
-            'halaman' => 'Data | Setings',
+            'halaman' => 'Data | Profile',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
         ];
 
@@ -22,7 +22,7 @@ class Settings extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/topbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('admin/settings/index');
+            $this->load->view('admin/profile/index');
             $this->load->view('templates/footer');
         } else {
             $data = [
@@ -39,7 +39,7 @@ class Settings extends CI_Controller
             $this->db->update('tbl_users', $data);
 
             $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data user berhasil diubah !</div>');
-            redirect('admin/settings');
+            redirect('admin/profile');
         }
     }
 }

@@ -43,46 +43,46 @@
 
                     <li class="app-sidebar__heading">Layanan Pasien</li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/layanan_pasien/antrian_pasien'); ?>">
                             <i class="metismenu-icon fas fa-pen-square"></i>
                             Antrian Pasien
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Layanan Dokter</li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/layanan_dokter/jadwal_dokter'); ?>">
                             <i class="metismenu-icon fas fa-calendar-alt"></i>
                             Jadwal Dokter
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/layanan_dokter/vaksin'); ?>">
                             <i class="metismenu-icon fas fa-syringe"></i>
                             Vaksin
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/layanan_dokter/steril'); ?>">
                             <i class="metismenu-icon fas fa-lungs-virus"></i>
                             Steril
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Pets Care</li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/pets_care/groming'); ?>">
                             <i class="metismenu-icon fas fa-paw"></i>
                             Groming
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/pets_care/penitipan'); ?>">
                             <i class="metismenu-icon fas fa-door-open"></i>
                             Penitipan
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Riwayat</li>
                     <li>
-                        <a href="<?= base_url('admin/jadwal_dokter/'); ?>">
+                        <a href="<?= base_url('admin/riwayat/riwayat_rekam_medis'); ?>">
                             <i class="metismenu-icon fas fa-user-md"></i>
                             Riwayat Rekam Medis
                         </a>

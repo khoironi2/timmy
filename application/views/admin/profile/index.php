@@ -7,10 +7,10 @@
                         <i class="fas fa-user icon-gradient bg-mean-fruit">
                         </i>
                     </div>
-                    <div>Profile</div>
+                    <div><?= $halaman; ?></div>
                 </div>
             </div>
-        </div>            
+        </div>
         <form action="<?= base_url('admin/settings/index'); ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <?= $this->session->flashdata('message'); ?>
@@ -88,11 +88,10 @@
                                 </div>
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-
