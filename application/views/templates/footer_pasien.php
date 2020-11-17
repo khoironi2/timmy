@@ -27,46 +27,63 @@
         $('.select2').select2();
     });
 </script>
+<script>
+    function autofill() {
+        var id_paket_vaksin = document.getElementById('id_paket_vaksin').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>pasien/layanan_dokter/vaksin/cari",
+            data: '&id_paket_vaksin=' + id_paket_vaksin,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_vaksin').value = val.id_paket_vaksin;
+                    document.getElementById('nama_paket_vaksin').value = val.nama_paket_vaksin;
+                    document.getElementById('harga_paket_vaksin').value = val.harga_paket_vaksin;
+                });
+            }
+        });
+    }
+
+    function total() {
+        var as = parseInt(document.getElementById('berat_penjualan').value);
+        var ad = parseInt(document.getElementById('harga_katalog').value);
+        var jumlah_harga = as * ad;
+        document.getElementById('total_penjualan').value = jumlah_harga;
+    }
+</script>
 </body>
 
 </html>
-
+<!-- start area modal tambah boking vaksin -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Boking v aksin</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Boking vaksin</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form autocomplete="off" action="<?= base_url('admin/layanan_dokter/jadwal_dokter/insert') ?>" method="POST">
+                <form autocomplete="off" action="<?= base_url('pasien/layanan_dokter/vaksin/insert') ?>" method="POST">
 
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Nama Hewan</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama_hewan_vaksin" class="form-control" placeholder="nama peliharaan" required>
-                            <input type="text" name="id_pasien" value="<?= $user['id_users'] ?>" class="form-control" required>
+                            <input type="text" name="nama_hewan_vaksin" class="form-control" placeholder="nama peliharaan" id="nama_hewan_vaksin" required>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="id_dokter" class="col-sm-2 col-form-label">Paket Vaksin</label>
+                        <label for="id_paket_vaksin" class="col-sm-2 col-form-label">Paket Vaksin</label>
                         <div class="col-sm-10">
-                            <select name="id_dokter_vaksin" class="form-control select2" style="width: 100%;" id="id_dokter_vaksin" required multiple>
-                                <?php foreach ($paketvaksin as $data) : ?>
-                                    <option value="<?= $data['id_paket_vaksin']; ?>"><?= $data['nama_paket_vaksin']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input list="data_santri" type="text" name="id_paket_vaksin" id="id_paket_vaksin" class="form-control" placeholder="paket vaksin" onchange="return autofill();">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Jam</label>
-                        <div class="col">
-                            <input type="time" name="jam_mulai" class="form-control" placeholder="Jam Mulai" required>
-                        </div>
-                        <div class="col">
-                            <input type="time" name="jam_selesai" class="form-control" placeholder="Jam Tutup" required>
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Jenis Paket</label>
+                        <div class="col-sm-10">
+                            <input readonly class="form-control-plaintext" type="text" id="nama_paket_vaksin">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -79,6 +96,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="harga_paket_vaksin" class="col-sm-2 col-form-label">Total</label>
+                        <div class="col-sm-10">
+                            <input readonly name="total_harga_vaksin" class="form-control-plaintext" type="text" id="harga_paket_vaksin" required>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -88,3 +111,13 @@
         </div>
     </div>
 </div>
+
+<datalist id="data_santri">
+    <?php
+    foreach ($record->result() as $b) {
+        echo "<option value='$b->id_paket_vaksin'> $b->nama_paket_vaksin </option>";
+    }
+    ?>
+</datalist>
+
+<!-- end area modal tambah boking vaksin -->
