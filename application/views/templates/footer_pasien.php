@@ -44,6 +44,22 @@
         });
     }
 
+    function autofillSteril() {
+        var id_paket_steril = document.getElementById('id_paket_steril').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>pasien/layanan_dokter/steril/cari",
+            data: '&id_paket_steril=' + id_paket_steril,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_steril').value = val.id_paket_steril;
+                    document.getElementById('nama_paket_steril').value = val.nama_paket_steril;
+                    document.getElementById('harga_paket_steril').value = val.harga_paket_steril;
+                });
+            }
+        });
+    }
+
     function total() {
         var as = parseInt(document.getElementById('berat_penjualan').value);
         var ad = parseInt(document.getElementById('harga_katalog').value);
