@@ -22,8 +22,12 @@ class Steril extends CI_Controller
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Steril',
-            'icon' => 'fas fa-lungs-virus'
+            'icon' => 'fas fa-lungs-virus',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'dokter' => $this->db->get_where('tbl_users', ['level' => 'dokter'])->result_array(),
+            'paketvaksin' => $this->db->get('tbl_paket_vaksin')->result_array()
         ];
+        $data['record'] =  $this->Paket_vaksin_model->tampil_data();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar_pasien');
