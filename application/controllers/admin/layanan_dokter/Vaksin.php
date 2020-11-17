@@ -21,9 +21,10 @@ class Vaksin extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'halaman' => 'Data | Vaksin',
             'icon' => 'fas fa-syringe',
-            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'vaksin' => $this->Vaksin_model->getAllVaksin(),
         ];
 
         $this->load->view('templates/header', $data);

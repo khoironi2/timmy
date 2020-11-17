@@ -33,3 +33,26 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 }
+
+// Dokter
+// Antrian Pasien => yang konformasi dokter (keperluan apa)
+// Jadwal Dokter => Jadwal dokter sesuai session
+// Vaksin => tabel boking vaksin, minta persetujuan admin kalau udah bayar
+// Steril => Hampir sam vaksin, jenis kelamin, jenis 
+// rekamedis => Riwayat rekamedis dokter sesuai session
+
+// Admin 
+// Dashboard => total user, total pasien vaksin groming penitipan dll
+// Antrian pasien => 
+// Jadwal Dokter => Admin bisa menginputkan jadwal dokter
+// Vaksin => Munculin data vaksin
+// Steril => Munculin data steril
+// Rekamedis -=> keseluruhan rekamedis dokter dan pasien
+
+// kalau yang udah vaksin itu udah penitipan
+
+
+// catatan2
+// Frontend => Syarat2
+// datang kerumah hewan yang besar
+// Home visit => Sapi, Kerabau (Hewan Perawatan)
