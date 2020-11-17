@@ -68,16 +68,20 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Dokter</label>
+                        <label for="id_dokter" class="col-sm-2 col-form-label">Dokter</label>
                         <div class="col-sm-10">
-                            <input type="text" name="id_dokter" class="form-control" id="inputPassword" required>
+                            <select name="id_dokter" class="form-control select2" style="width: 100%;" id="id_dokter" required multiple>
+                                <?php foreach ($dokter as $data) : ?>
+                                    <option value="<?= $data['id_users']; ?>"><?= $data['name']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
             </form>
         </div>
     </div>

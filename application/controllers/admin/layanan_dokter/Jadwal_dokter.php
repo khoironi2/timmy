@@ -24,6 +24,7 @@ class Jadwal_dokter extends CI_Controller
             'halaman' => 'Data | Jadwal Dokter',
             'icon' => 'fas fa-calendar-alt',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'dokter' => $this->db->get_where('tbl_users', ['level' => 'dokter'])->result_array()
         ];
 
         $this->load->view('templates/header', $data);
