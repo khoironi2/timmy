@@ -15,10 +15,17 @@
 </div>
 </div>
 
-
+<script src="<?= base_url('assets/vendors') ?>/jquery-3.5.1.js"></script>
 <script src="<?= base_url('assets/admin') ?>/scripts/main.js"></script>
+<script src="<?= base_url('assets/vendors/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendors/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendors/select/select2.min.js') ?>"></script>
 <script>
-    $('#id_users').select2();
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
+
+    $('#select2').select2();
 </script>
 </body>
 
@@ -38,7 +45,7 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Hari</label>
                         <div class="col-sm-10">
-                            <select name="hari" class="form-control" id="hari" required>
+                            <select name="hari" class="form-control select2" id="hari" required multiple>
                                 <option value="senin">Senin</option>
                                 <option value="selasa">Selasa</option>
                                 <option value="rabu">Rabu</option>

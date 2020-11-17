@@ -11,9 +11,9 @@
                 </div>
             </div>
         </div>
+        <?= $this->session->flashdata('message'); ?>
         <form action="<?= base_url('admin/settings/index'); ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <?= $this->session->flashdata('message'); ?>
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
@@ -66,10 +66,6 @@
                                 <input type="text" class="form-control" id="instagram_users" name="instagram_users" value="<?= $user['instagram_users'] ?>">
                                 <?= form_error('instagram_users', '<small class="text-danger">', '</small>'); ?>
                             </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Update</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +84,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <img class="img-thumbnail" src="<?= base_url('assets/img/users/' . $user['gambar_users']); ?>">
+                            </div>
 
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Update</button>
+                            </div>
                         </div>
                     </div>
                 </div>

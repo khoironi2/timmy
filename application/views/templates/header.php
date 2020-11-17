@@ -13,6 +13,12 @@
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="<?= base_url('assets/vendors/fontawesome/css/all.css'); ?>">
+
+    <link rel="stylesheet" href="<?= base_url('assets/vendors/datatables/dataTables.bootstrap4.min.css') ?>">
+
+    <link rel="stylesheet" href="<?= base_url('assets/vendors/select/select2.min.css') ?>">
+
+    <!-- <script src="<?= base_url('assets/vendors/select/select2.min.js') ?>"></script> -->
 </head>
 
 <body>

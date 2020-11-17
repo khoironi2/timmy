@@ -22,14 +22,15 @@ class Jadwal_dokter extends CI_Controller
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Jadwal Dokter',
-            'icon' => 'fas fa-calendar-alt'
+            'icon' => 'fas fa-calendar-alt',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
         ];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
         $this->load->view('admin/layanan_dokter/jadwal_dokter/index');
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer');
     }
 
     public function insert()
