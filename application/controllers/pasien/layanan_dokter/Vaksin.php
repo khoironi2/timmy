@@ -25,7 +25,8 @@ class Vaksin extends CI_Controller
             'icon' => 'fas fa-syringe',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'dokter' => $this->db->get_where('tbl_users', ['level' => 'dokter'])->result_array(),
-            'paketvaksin' => $this->db->get('tbl_paket_vaksin')->result_array()
+            'paketvaksin' => $this->db->get('tbl_paket_vaksin')->result_array(),
+            'boking' => $this->Boking_vaksin_model->getAll()
         ];
         $data['record'] =  $this->Paket_vaksin_model->tampil_data();
 
@@ -70,5 +71,26 @@ class Vaksin extends CI_Controller
                 redirect('pasien/layanan_dokter/vaksin');
             }
         }
+    }
+
+    public function updateStatusW($id)
+    {
+        $client = $this->Boking_vaksin_model->getPById($id);
+        $status_client = "";
+
+        if ($client->status_boking_vaksin == "belum") {
+            $status_client = "antri";
+        } else {
+            $status_client = "antri";
+        }
+
+        $data = array(
+            'id_boking_vaksin'         => $id,
+            'status_boking_vaksin'     => $status_client
+        );
+
+        $this->Boking_vaksin_model->updateData($id, $data);
+
+        redirect(site_url('pasien/layanan_dokter/vaksin'));
     }
 }

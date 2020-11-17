@@ -4,9 +4,22 @@ class Boking_vaksin_model extends CI_model
 {
     public function getAll()
     {
-        $this->db->select('*');
-        $this->db->from('tbl_jadwal_dokter');
-        $this->db->join('tbl_users', 'tbl_users.id_users=tbl_jadwal_dokter.id_dokter');
+        $this->db->select('
+        pasien.name as nama_pemilik,
+        paketvaksin.nama_paket_vaksin,
+        tbl_boking_vaksin.total_harga_vaksin,
+        tbl_boking_vaksin.keterangan_tambahan_vaksin,
+        tbl_boking_vaksin.nama_hewan_vaksin,
+        tbl_boking_vaksin.status_boking_vaksin,
+        tbl_boking_vaksin.id_boking_vaksin,
+        dokter.name as nama_dokter
+        ');
+        $this->db->from('tbl_boking_vaksin');
+        $this->db->join('tbl_users as pasien', 'pasien.id_users=tbl_boking_vaksin.id_pasien');
+        $this->db->join('tbl_users as dokter', 'dokter.id_users=tbl_boking_vaksin.id_dokter_vaksin');
+        $this->db->join('tbl_paket_vaksin as paketvaksin', 'paketvaksin.id_paket_vaksin=tbl_boking_vaksin.id_paket_vaksin');
+        $this->db->where('tbl_boking_vaksin.id_pasien', $this->session->userdata('id_users'));
+
         $result = $this->db->get();
 
         return $result->result();
@@ -110,5 +123,21 @@ class Boking_vaksin_model extends CI_model
             return true;
         else
             return false;
+    }
+
+    public function getPById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_boking_vaksin');
+        $this->db->where('id_boking_vaksin', $id);
+
+        $result = $this->db->get();
+
+        return $result->row();
+    }
+    public function updateData($id, $data)
+    {
+        $this->db->where('id_boking_vaksin', $id);
+        $this->db->update('tbl_boking_vaksin', $data);
     }
 }

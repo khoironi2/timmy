@@ -20,17 +20,50 @@
         </div>
     </div>
 </div>
+
+
 <div class="row">
-    <div class="col-md-6 col-xl-4">
-        <div class="card mb-3 widget-content bg-midnight-bloom">
-            <div class="widget-content-wrapper text-white">
-                <div class="widget-content-left">
-                    <div class="widget-heading">Total Orders</div>
-                    <div class="widget-subheading">Last year expenses</div>
-                </div>
-                <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>1896</span></div>
-                </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Info Vaksin
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Pemilik</th>
+                            <th scope="col">Hewan</th>
+                            <th scope="col">Paket</th>
+                            <th scope="col">Dokter</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; ?>
+                        <?php foreach ($boking as $data) : ?>
+                            <tr>
+                                <th scope="row"><?= $no++; ?></th>
+                                <td><?= $data->nama_pemilik; ?></td>
+                                <td><?= $data->nama_hewan_vaksin; ?></td>
+                                <td><?= $data->nama_paket_vaksin; ?></td>
+                                <td><?= $data->nama_dokter; ?></td>
+                                <td><?= $data->total_harga_vaksin; ?></td>
+                                <td>
+                                    <?php if ($data->status_boking_vaksin == 'sudah') : ?>
+                                        <span class="badge badge-success">Selesai</span>
+                                    <?php elseif ($data->status_boking_vaksin == 'belum') : ?>
+                                        <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
+                                    <?php elseif ($data->status_boking_vaksin == 'antri') : ?>
+                                        <span class="badge badge-warning">Sedang Antri</span>
+                                    <?php endif; ?>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -106,3 +139,35 @@
 </datalist>
 
 <!-- end area modal tambah boking vaksin -->
+
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal<?= $data->id_boking_vaksin ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo <?= $data->nama_pemilik ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Donatur <b><?= $data->nama_pemilik ?></b> Berdonasi Sejumlah <b> Rp. <?= number_format($data->total_harga_vaksin, 0, ',', '.'); ?></b></label>
+                            <img class="img-thumbnail" src="<?= base_url('assets/img/bukti_donasi/' . $data->nama_pemilik) ?>" alt="">
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <a href="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusW/' . $data->id_boking_vaksin) ?>" class="btn btn-primary">Terima</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
