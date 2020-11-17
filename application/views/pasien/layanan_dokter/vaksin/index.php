@@ -55,8 +55,11 @@
                                         <span class="badge badge-success">Selesai</span>
                                     <?php elseif ($data->status_boking_vaksin == 'belum') : ?>
                                         <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
+                                        <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-danger">Visit Home</span></a>
                                     <?php elseif ($data->status_boking_vaksin == 'antri') : ?>
                                         <span class="badge badge-warning">Sedang Antri</span>
+                                    <?php elseif ($data->status_boking_vaksin == 'visit') : ?>
+                                        <span class="badge badge-warning">Dokter Sedang Bersiap Kesitu</span>
                                     <?php endif; ?>
                                 </td>
 
@@ -157,17 +160,51 @@ foreach ($boking as $data) : ?>
                 <form action="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusW/' . $data->id_boking_vaksin) ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Donatur <b><?= $data->nama_pemilik ?></b> Berdonasi Sejumlah <b> Rp. <?= number_format($data->total_harga_vaksin, 0, ',', '.'); ?></b></label>
+                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda kana mengikuti antrian untuk hewan kesayangan anda <b><?= $data->nama_hewan_vaksin; ?></b> </label>
                             <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
                             <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-secondary">Oke</button>
+                        <button type="submit" class="btn btn-warning">Ikut</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 <?php endforeach ?>
+<!-- end ikut antri -->
+
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="visitModal<?= $data->id_boking_vaksin ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo <?= $data->nama_pemilik ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusandVisit/' . $data->id_boking_vaksin) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan meminta tim kami untuk visit hewan kesayangan anda <b><?= $data->nama_hewan_vaksin; ?></b> </label>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-danger">Visit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
