@@ -21,6 +21,7 @@ class Groming extends CI_Controller
     {
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'halaman' => 'Data | Groming',
             'icon' => 'fas fa-paw'
         ];
