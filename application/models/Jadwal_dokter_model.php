@@ -2,10 +2,11 @@
 
 class Jadwal_dokter_model extends CI_model
 {
-    public function getAllUsers()
+    public function getAll()
     {
         $this->db->select('*');
-        $this->db->from('tbl_users');
+        $this->db->from('tbl_jadwal_dokter');
+        $this->db->join('tbl_users', 'tbl_users.id_users=tbl_jadwal_dokter.id_dokter');
         $result = $this->db->get();
 
         return $result->result();
