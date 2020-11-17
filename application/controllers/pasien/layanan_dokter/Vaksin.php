@@ -63,6 +63,7 @@ class Vaksin extends CI_Controller
                 'id_paket_vaksin' => $id_paket_vaksin,
                 'id_dokter_vaksin' => $id_dokter_vaksin,
                 'total_harga_vaksin' => $total_harga_vaksin,
+                'status_boking_vaksin'     => 'belum',
                 'time_create_boking_vaksin' => date('Y-m-d H:i:s')
             ];
             $insert = $this->Boking_vaksin_model->insert("tbl_boking_vaksin", $data);
@@ -99,6 +100,36 @@ class Vaksin extends CI_Controller
 
         $this->Boking_vaksin_model->updateData($id, $data);
         $this->Antrian_pasien_model->Insert('tbl_antrian_pasien', $data1);
+
+        redirect(site_url('pasien/layanan_dokter/vaksin'));
+    }
+
+    public function updateStatusandVisit($id)
+    {
+        $client = $this->Boking_vaksin_model->getPById($id);
+        $status_client = "";
+
+        if ($client->status_boking_vaksin == "belum") {
+            $status_client = "visit";
+        } else {
+            $status_client = "visit";
+        }
+
+        $data = array(
+            'id_boking_vaksin'         => $id,
+            'status_boking_vaksin'     => $status_client
+        );
+        $data1 = array(
+            'id_status_visit'         => $id,
+            'status_visit_pasien'     => 'waiting',
+            'id_pasien'     => $this->input->post('id_pasien'),
+            'id_dokter'     => $this->input->post('id_dokter'),
+            'time_create_visit' => date('Y-m-d H:i:s'),
+            'time_update_visit' => date('Y-m-d H:i:s')
+        );
+
+        $this->Boking_vaksin_model->updateData($id, $data);
+        $this->Visit_pasien_model->Insert('tbl_visit_pasien', $data1);
 
         redirect(site_url('pasien/layanan_dokter/vaksin'));
     }

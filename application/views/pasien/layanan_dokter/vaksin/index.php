@@ -160,7 +160,7 @@ foreach ($boking as $data) : ?>
                 <form action="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusW/' . $data->id_boking_vaksin) ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda kana mengikuti antrian untuk hewan kesayangan anda <b><?= $data->nama_hewan_vaksin; ?></b> </label>
+                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan mengikuti antrian untuk hewan kesayangan anda <b><?= $data->nama_hewan_vaksin; ?></b> </label>
                             <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
                             <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
                         </div>
