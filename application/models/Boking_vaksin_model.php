@@ -12,7 +12,8 @@ class Boking_vaksin_model extends CI_model
         tbl_boking_vaksin.nama_hewan_vaksin,
         tbl_boking_vaksin.status_boking_vaksin,
         tbl_boking_vaksin.id_boking_vaksin,
-        dokter.name as nama_dokter
+        dokter.name as nama_dokter,
+        dokter.id_users as id_dokter
         ');
         $this->db->from('tbl_boking_vaksin');
         $this->db->join('tbl_users as pasien', 'pasien.id_users=tbl_boking_vaksin.id_pasien');

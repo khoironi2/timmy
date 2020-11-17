@@ -52,9 +52,9 @@ class Antrian_pasien_model extends CI_model
         return $result->result();
     }
 
-    public function Insert($table, $data)
+    public function Insert($table, $data1)
     {
-        return $this->db->insert($table, $data);
+        return $this->db->insert($table, $data1);
     }
 
 

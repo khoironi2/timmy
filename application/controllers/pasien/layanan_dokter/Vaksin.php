@@ -88,8 +88,17 @@ class Vaksin extends CI_Controller
             'id_boking_vaksin'         => $id,
             'status_boking_vaksin'     => $status_client
         );
+        $data1 = array(
+            'id_status_antrian'         => $id,
+            'status_antrian_pasien'     => 'belum',
+            'id_pasien'     => $this->input->post('id_pasien'),
+            'id_dokter'     => $this->input->post('id_dokter'),
+            'time_create_antrian' => date('Y-m-d H:i:s'),
+            'time_update_antrian' => date('Y-m-d H:i:s')
+        );
 
         $this->Boking_vaksin_model->updateData($id, $data);
+        $this->Antrian_pasien_model->Insert('tbl_antrian_pasien', $data1);
 
         redirect(site_url('pasien/layanan_dokter/vaksin'));
     }

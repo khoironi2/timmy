@@ -154,18 +154,18 @@ foreach ($boking as $data) : ?>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form action="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusW/' . $data->id_boking_vaksin) ?>" method="POST">
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Donatur <b><?= $data->nama_pemilik ?></b> Berdonasi Sejumlah <b> Rp. <?= number_format($data->total_harga_vaksin, 0, ',', '.'); ?></b></label>
-                            <img class="img-thumbnail" src="<?= base_url('assets/img/bukti_donasi/' . $data->nama_pemilik) ?>" alt="">
-
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <a href="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusW/' . $data->id_boking_vaksin) ?>" class="btn btn-primary">Terima</a>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-secondary">Oke</button>
+                    </div>
                 </form>
             </div>
         </div>
