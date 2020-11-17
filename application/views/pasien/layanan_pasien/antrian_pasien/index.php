@@ -20,21 +20,51 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-6 col-xl-4">
-        <div class="card mb-3 widget-content bg-midnight-bloom">
-            <div class="widget-content-wrapper text-white">
-                <div class="widget-content-left">
-                    <div class="widget-heading">Total Orders</div>
-                    <div class="widget-subheading">Last year expenses</div>
-                </div>
-                <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>1896</span></div>
-                </div>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <?php foreach ($antriansteril as $data) : ?>
+                    </tr>
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Antrian Steril</h5>
+                            <p class="card-text"><?= $data->name; ?></p>
+                            <p class="card-text"><?= $data->dokter; ?></p>
+                            <p class="card-text"> <?= $data->nama_hewan_steril; ?>
+                                <?= $data->nama_paket_steril; ?></p>
+                            <a href="#" class="btn btn-primary"><?= $data->status_antrian_pasien; ?></a>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <?php foreach ($antrianvaksin as $data) : ?>
+                    </tr>
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Antrian Vaksin</h5>
+                            <p class="card-text"><?= $data->name; ?></p>
+                            <p class="card-text"><?= $data->dokter; ?></p>
+                            <p class="card-text"> <?= $data->nama_hewan_vaksin; ?>
+                                <?= $data->nama_paket_vaksin; ?></p>
+                            <a href="#" class="btn btn-primary"><?= $data->status_antrian_pasien; ?></a>
+                        </div>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
 </div>
+
+<hr>
+
+
 </div>
 </div>
 </div>

@@ -22,7 +22,9 @@ class Antrian_pasien extends CI_Controller
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Antrian Pasien',
-            'icon' => 'fas fa-pen-square'
+            'icon' => 'fas fa-pen-square',
+            'antriansteril' => $this->Antrian_pasien_model->getAllSteril(),
+            'antrianvaksin' => $this->Antrian_pasien_model->getAllVaksin()
         ];
 
         $this->load->view('templates/header', $data);
