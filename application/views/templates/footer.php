@@ -23,9 +23,11 @@
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
+
+        $('.select2').select2();
     });
 
-    $('#select2').select2();
+    
 </script>
 </body>
 
@@ -45,7 +47,7 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Hari</label>
                         <div class="col-sm-10">
-                            <select name="hari" class="form-control select2" id="hari" required multiple>
+                            <select name="hari" class="form-control select2" style="width: 100%;" id="hari" required multiple>
                                 <option value="senin">Senin</option>
                                 <option value="selasa">Selasa</option>
                                 <option value="rabu">Rabu</option>
