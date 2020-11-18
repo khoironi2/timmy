@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Groming_model extends CI_Model
 {
@@ -10,5 +10,16 @@ class Groming_model extends CI_Model
               INNER JOIN `tbl_paket_groming` ON `tbl_paket_groming`.`id_paket_groming` = `tbl_boking_groming`.`id_paket_groming`";
 
         return $this->db->query($query)->result_array();
+    }
+    public function getAllMyGroming()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_boking_groming');
+        $this->db->join('tbl_users as user', 'user.id_users=tbl_boking_groming.id_pasien');
+        $this->db->join('tbl_paket_groming as paketgrom', 'paketgrom.id_paket_groming=tbl_boking_groming.id_paket_groming');
+        $this->db->where('tbl_boking_groming.id_pasien', $this->session->userdata('id_users'));
+        $result = $this->db->get();
+
+        return $result->result();
     }
 }

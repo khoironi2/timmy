@@ -60,6 +60,22 @@
         });
     }
 
+    function autofillGroming() {
+        var id_paket_groming = document.getElementById('id_paket_groming').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>pasien/pets_care/groming/cari",
+            data: '&id_paket_groming=' + id_paket_groming,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_groming').value = val.id_paket_groming;
+                    document.getElementById('nama_paket_groming').value = val.nama_paket_groming;
+                    document.getElementById('harga_paket_groming').value = val.harga_paket_groming;
+                });
+            }
+        });
+    }
+
     function total() {
         var as = parseInt(document.getElementById('berat_penjualan').value);
         var ad = parseInt(document.getElementById('harga_katalog').value);
