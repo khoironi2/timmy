@@ -49,12 +49,18 @@
                                 <td><?= $data->total_harga_vaksin; ?></td>
                                 <td>
                                     <?php if ($data->status_boking_vaksin == 'sudah') : ?>
-                                        <span class="badge badge-success">Selesai</span>
+                                        <span class="badge badge-success">Silahkan Selesaikan Pembayaran di Admin</span>
                                     <?php elseif ($data->status_boking_vaksin == 'belum') : ?>
                                         <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
                                         <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-danger">Visit Home</span></a>
                                     <?php elseif ($data->status_boking_vaksin == 'antri') : ?>
                                         <span class="badge badge-warning">Sedang Antri</span>
+                                    <?php elseif ($data->status_boking_vaksin == 'waiting') : ?>
+                                        <span class="badge badge-warning">Tunggu sampai anda dipanggil</span>
+                                    <?php elseif ($data->status_boking_vaksin == 'giliran_anda') : ?>
+                                        <span class="badge badge-success">silahkan masuk ke ruangan dokter : <b><?= $data->nama_dokter; ?></b></span>
+                                    <?php elseif ($data->status_boking_vaksin == 'mulai') : ?>
+                                        <span class="badge badge-success">peliharaan sedang diperiksa dokter : <b><?= $data->nama_dokter; ?></b></span>
                                     <?php elseif ($data->status_boking_vaksin == 'visit') : ?>
                                         <span class="badge badge-warning">Dokter Sedang Bersiap Kesitu</span>
                                     <?php elseif ($data->status_boking_vaksin == 'menuju') : ?>
