@@ -31,6 +31,35 @@ class Antrian_pasien_model extends CI_model
 
         return $result->result();
     }
+    public function getAllSterilInDokter()
+    {
+        $this->db->select('tbl_antrian_pasien.status_antrian_pasien,tbl_users.name,dok.name as dokter,tbl_boking_steril.nama_hewan_steril,tbl_paket_steril.nama_paket_steril');
+        $this->db->from('tbl_antrian_pasien');
+        $this->db->join('tbl_users', 'tbl_users.id_users=tbl_antrian_pasien.id_pasien');
+        $this->db->join('tbl_users as dok', 'dok.id_users=tbl_antrian_pasien.id_dokter');
+        $this->db->join('tbl_boking_steril', 'tbl_boking_steril.id_boking_steril=tbl_antrian_pasien.id_status_antrian');
+        $this->db->join('tbl_paket_steril', 'tbl_paket_steril.id_paket_steril=tbl_boking_steril.id_paket_steril');
+        $this->db->where('tbl_antrian_pasien.id_dokter', $this->session->userdata('id_users'));
+        $this->db->where('status_antrian_pasien !=', 'selesai_administrasi');
+
+        $result = $this->db->get();
+
+        return $result->result();
+    }
+    public function getAllVaksinInDokter()
+    {
+        $this->db->select('tbl_antrian_pasien.status_antrian_pasien,tbl_users.name,dok.name as dokter,tbl_boking_vaksin.nama_hewan_vaksin,tbl_paket_vaksin.nama_paket_vaksin');
+        $this->db->from('tbl_antrian_pasien');
+        $this->db->join('tbl_users', 'tbl_users.id_users=tbl_antrian_pasien.id_pasien');
+        $this->db->join('tbl_users as dok', 'dok.id_users=tbl_antrian_pasien.id_dokter');
+        $this->db->join('tbl_boking_vaksin', 'tbl_boking_vaksin.id_boking_vaksin=tbl_antrian_pasien.id_status_antrian');
+        $this->db->join('tbl_paket_vaksin', 'tbl_paket_vaksin.id_paket_vaksin=tbl_boking_vaksin.id_paket_vaksin');
+        $this->db->where('tbl_antrian_pasien.id_dokter', $this->session->userdata('id_users'));
+        $this->db->where('status_antrian_pasien !=', 'selesai_administrasi');
+        $result = $this->db->get();
+
+        return $result->result();
+    }
     public function getAllUsersDokter()
     {
         $this->db->select('*');

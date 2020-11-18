@@ -22,7 +22,8 @@ class Jadwal_dokter extends CI_Controller
         $data = [
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Jadwal Dokter',
-            'icon' => 'fas fa-calendar-alt'
+            'icon' => 'fas fa-calendar-alt',
+            'jadwal' => $this->Jadwal_dokter_model->getAllInDokter()
         ];
 
         $this->load->view('templates/header', $data);
