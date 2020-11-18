@@ -190,6 +190,9 @@ foreach ($boking as $data) : ?>
                             <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
                             <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
                         </div>
+                        <div class="form-group">
+                            <textarea name="keterangan_tambahan_steril" id="keterangan_tambahan_steril" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

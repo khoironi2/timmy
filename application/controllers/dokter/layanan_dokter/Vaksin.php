@@ -125,6 +125,7 @@ class Vaksin extends CI_Controller
         }
         $data = array(
             'id_boking_vaksin'         => $id,
+            'keterangan_tambahan_vaksin' => $this->input->post('keterangan_tambahan_vaksin'),
             'status_boking_vaksin'     => $status_client
         );
         $data1 = array(

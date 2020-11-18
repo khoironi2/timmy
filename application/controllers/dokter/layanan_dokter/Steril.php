@@ -126,6 +126,7 @@ class Steril extends CI_Controller
         }
         $data = array(
             'id_boking_steril'         => $id,
+            'keterangan_tambahan_steril' => $this->input->post('keterangan_tambahan_steril'),
             'status_boking_steril'     => $status_client
         );
         $data1 = array(
