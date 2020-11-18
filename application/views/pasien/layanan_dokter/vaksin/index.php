@@ -57,8 +57,12 @@
                                         <span class="badge badge-warning">Sedang Antri</span>
                                     <?php elseif ($data->status_boking_vaksin == 'visit') : ?>
                                         <span class="badge badge-warning">Dokter Sedang Bersiap Kesitu</span>
+                                    <?php elseif ($data->status_boking_vaksin == 'menuju') : ?>
+                                        <span class="badge badge-warning">Dokter <b><?= $data->nama_dokter; ?></b> Sedang dalam perjalanan ke tempat anda </span>
+                                    <?php elseif ($data->status_boking_vaksin == 'ditangani') : ?>
+                                        <span class="badge badge-danger">Sedang ditangani Dokter <b><?= $data->nama_dokter; ?></b> </span>
                                     <?php elseif ($data->status_boking_vaksin == 'visit_selesai') : ?>
-                                        <span class="badge badge-success">Kunjungan Dokter Selesai</span>
+                                        <span class="badge badge-success">Visit Dokter Selesai</span>
                                     <?php endif; ?>
                                 </td>
 

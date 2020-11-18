@@ -35,4 +35,84 @@ class Vaksin extends CI_Controller
         $this->load->view('dokter/layanan_dokter/vaksin/index');
         $this->load->view('templates/footer_dokter');
     }
+
+    public function updateStatusandVisit($id)
+    {
+        $client = $this->Boking_vaksin_model->getPById($id);
+        $status_client = "";
+
+        if ($client->status_boking_vaksin == "visit") {
+            $status_client = "menuju";
+        } else {
+            $status_client = "menuju";
+        }
+
+        $data = array(
+            'id_boking_vaksin'         => $id,
+            'status_boking_vaksin'     => $status_client
+        );
+        $data1 = array(
+            'id_status_visit'         => $id,
+            'status_visit_pasien'     => 'menuju',
+            'time_update_visit' => date('Y-m-d H:i:s')
+        );
+
+        $this->Boking_vaksin_model->updateData($id, $data);
+        $this->Visit_pasien_model->update($id, $data1);
+
+        redirect(site_url('dokter/layanan_dokter/vaksin'));
+    }
+    public function updateStatusandVisitTangani($id)
+    {
+        $client = $this->Boking_vaksin_model->getPById($id);
+        $status_client = "";
+
+        if ($client->status_boking_vaksin == "menuju") {
+            $status_client = "ditangani";
+        } else {
+            $status_client = "ditangani";
+        }
+
+        $data = array(
+            'id_boking_vaksin'         => $id,
+            'status_boking_vaksin'     => $status_client
+        );
+        $data1 = array(
+            'id_status_visit'         => $id,
+            'status_visit_pasien'     => 'ditangani',
+            'time_update_visit' => date('Y-m-d H:i:s')
+        );
+
+        $this->Boking_vaksin_model->updateData($id, $data);
+        $this->Visit_pasien_model->update($id, $data1);
+
+        redirect(site_url('dokter/layanan_dokter/vaksin'));
+    }
+    public function updateStatusandVisitCatatanMedis($id)
+    {
+        $client = $this->Boking_vaksin_model->getPById($id);
+        $status_client = "";
+
+        if ($client->status_boking_vaksin == "ditangani") {
+            $status_client = "visit_selesai";
+        } else {
+            $status_client = "visit_selesai";
+        }
+
+        $data = array(
+            'id_boking_vaksin'         => $id,
+            'status_boking_vaksin'     => $status_client,
+            'keterangan_tambahan_vaksin' => $this->input->post('keterangan_tambahan_vaksin'),
+        );
+        $data1 = array(
+            'id_status_visit'         => $id,
+            'status_visit_pasien'     => 'sudah',
+            'time_update_visit' => date('Y-m-d H:i:s')
+        );
+
+        $this->Boking_vaksin_model->updateData($id, $data);
+        $this->Visit_pasien_model->update($id, $data1);
+
+        redirect(site_url('dokter/layanan_dokter/vaksin'));
+    }
 }

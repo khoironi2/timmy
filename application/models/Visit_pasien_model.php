@@ -69,10 +69,10 @@ class Visit_pasien_model extends CI_model
         return $query;
     }
 
-    public function update($id, $data)
+    public function update($id, $data1)
     {
-        $this->db->where('id_users', $id);
-        $this->db->update('tbl_users', $data);
+        $this->db->where('id_status_visit', $id);
+        $this->db->update('tbl_visit_pasien', $data1);
 
         if ($this->db->affected_rows() > 0)
             return true;
