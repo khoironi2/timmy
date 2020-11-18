@@ -8,15 +8,6 @@
             <div><?= $halaman; ?></div>
         </div>
         <div class="page-title-actions">
-
-            <div class="d-inline-block dropdown">
-                <a href="" class="btn-shadow btn btn-info" data-toggle="modal" data-target="#exampleModal">
-                    <span class="btn-icon-wrapper pr-2 opacity-7">
-                        <i class="fas fa-business-time fa-w-20"></i>
-                    </span>
-                    Buttons
-                </a>
-            </div>
         </div>
     </div>
 </div>
@@ -26,15 +17,26 @@
             <div class="row">
                 <?php foreach ($antriansteril as $data) : ?>
                     </tr>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="page-title-icon ml-4 mt-4">
+                            <i class="metismenu-icon fas fa-paw icon-gradient bg-mean-fruit"></i>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">Antrian Steril</h5>
                             <p class="card-text"><?= $data->name; ?></p>
                             <p class="card-text"><?= $data->dokter; ?></p>
-                            <p class="card-text"> <?= $data->nama_hewan_steril; ?>
-                                <?= $data->nama_paket_steril; ?></p>
-                            <a href="#" class="btn btn-primary"><?= $data->status_antrian_pasien; ?></a>
+                            <p class="card-text"> <?= $data->nama_hewan_steril; ?><?= $data->nama_paket_steril; ?></p>
+                            <?php if ($data->status_antrian_pasien == 'sudah') : ?>
+                                <span class="btn btn-warning">selesaikan pembayaran di admin</span>
+                            <?php elseif ($data->status_antrian_pasien == 'belum') : ?>
+                                <span class="btn btn-danger">Belum</span>
+                            <?php elseif ($data->status_antrian_pasien == 'waiting') : ?>
+                                <span class="btn btn-warning">Silahkan tunggu sebentar sampai anda di panggil</span>
+                            <?php elseif ($data->status_antrian_pasien == 'giliran_anda') : ?>
+                                <span class="btn btn-primary">Silahkan masuk ke ruangan Dokter : <b><?= $data->dokter; ?></b></span>
+                            <?php elseif ($data->status_antrian_pasien == 'mulai') : ?>
+                                <span class="btn btn-warning">peliharan sedang ditangani Dokter : <b><?= $data->dokter; ?></b></span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach ?>
@@ -45,15 +47,26 @@
             <div class="row">
                 <?php foreach ($antrianvaksin as $data) : ?>
                     </tr>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="page-title-icon ml-4 mt-4">
+                            <i class="metismenu-icon fas fa-paw icon-gradient bg-mean-fruit"></i>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">Antrian Vaksin</h5>
                             <p class="card-text"><?= $data->name; ?></p>
                             <p class="card-text"><?= $data->dokter; ?></p>
-                            <p class="card-text"> <?= $data->nama_hewan_vaksin; ?>
-                                <?= $data->nama_paket_vaksin; ?></p>
-                            <a href="#" class="btn btn-primary"><?= $data->status_antrian_pasien; ?></a>
+                            <p class="card-text"> <?= $data->nama_hewan_vaksin; ?><?= $data->nama_paket_vaksin; ?></p>
+                            <?php if ($data->status_antrian_pasien == 'sudah') : ?>
+                                <span class="btn btn-warning">selesaikan pembayaran di admin</span>
+                            <?php elseif ($data->status_antrian_pasien == 'belum') : ?>
+                                <span class="btn btn-danger">Belum</span>
+                            <?php elseif ($data->status_antrian_pasien == 'waiting') : ?>
+                                <span class="btn btn-warning">Silahkan tunggu sebentar sampai anda di panggil</span>
+                            <?php elseif ($data->status_antrian_pasien == 'giliran_anda') : ?>
+                                <span class="btn btn-primary">Silahkan masuk ke ruangan Dokter : <b><?= $data->dokter; ?></b></span>
+                            <?php elseif ($data->status_antrian_pasien == 'mulai') : ?>
+                                <span class="btn btn-warning">peliharan sedang ditangani Dokter : <b><?= $data->dokter; ?></b></span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach ?>
