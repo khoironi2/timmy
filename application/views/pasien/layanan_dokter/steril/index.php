@@ -20,21 +20,59 @@
         </div>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-md-6 col-xl-4">
-        <div class="card mb-3 widget-content bg-midnight-bloom">
-            <div class="widget-content-wrapper text-white">
-                <div class="widget-content-left">
-                    <div class="widget-heading">Total Orders</div>
-                    <div class="widget-subheading">Last year expenses</div>
-                </div>
-                <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>1896</span></div>
-                </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Info Vaksin
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Pemilik</th>
+                            <th scope="col">Hewan</th>
+                            <th scope="col">Paket</th>
+                            <th scope="col">Dokter</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; ?>
+                        <?php foreach ($boking as $data) : ?>
+                            <tr>
+                                <th scope="row"><?= $no++; ?></th>
+                                <td><?= $data->nama_pemilik; ?></td>
+                                <td><?= $data->nama_hewan_steril; ?></td>
+                                <td><?= $data->nama_paket_steril; ?></td>
+                                <td><?= $data->nama_dokter; ?></td>
+                                <td><?= $data->total_harga_steril; ?></td>
+                                <td>
+                                    <?php if ($data->status_boking_steril == 'sudah') : ?>
+                                        <span class="badge badge-success">Selesai</span>
+                                    <?php elseif ($data->status_boking_steril == 'belum') : ?>
+                                        <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
+                                        <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_steril ?>"><span class=" badge badge-danger">Visit Home</span></a>
+                                    <?php elseif ($data->status_boking_steril == 'antri') : ?>
+                                        <span class="badge badge-warning">Sedang Antri</span>
+                                    <?php elseif ($data->status_boking_steril == 'visit') : ?>
+                                        <span class="badge badge-warning">Dokter Sedang Bersiap Kesitu</span>
+                                    <?php elseif ($data->status_boking_steril == 'visit_selesai') : ?>
+                                        <span class="badge badge-success">Kunjungan Dokter Selesai</span>
+                                    <?php endif; ?>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
 </div>
 </div>
 </div>
@@ -106,3 +144,69 @@
 </datalist>
 
 <!-- end area modal tambah boking vaksin -->
+
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo <?= $data->nama_pemilik ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('pasien/layanan_dokter/steril/updateStatusW/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan mengikuti antrian untuk hewan kesayangan anda <b><?= $data->nama_hewan_steril; ?></b> </label>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning">Ikut</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
+
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="visitModal<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo <?= $data->nama_pemilik ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('pasien/layanan_dokter/steril/updateStatusandVisit/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan meminta tim kami untuk visit ke : <b><?= $data->alamat_pemilik ?></b> untuk menangani hewan kesayangan anda <b><?= $data->nama_hewan_steril; ?></b> </label>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-danger">Visit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->

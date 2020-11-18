@@ -8,7 +8,6 @@
             <div><?= $halaman; ?></div>
         </div>
         <div class="page-title-actions">
-
             <div class="d-inline-block dropdown">
                 <a href="" class="btn-shadow btn btn-info" data-toggle="modal" data-target="#exampleModal">
                     <span class="btn-icon-wrapper pr-2 opacity-7">
@@ -20,8 +19,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -195,7 +192,7 @@ foreach ($boking as $data) : ?>
                 <form action="<?= base_url('pasien/layanan_dokter/vaksin/updateStatusandVisit/' . $data->id_boking_vaksin) ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan meminta tim kami untuk visit hewan kesayangan anda <b><?= $data->nama_hewan_vaksin; ?></b> </label>
+                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan meminta tim kami untuk visit ke : <b><?= $data->alamat_pemilik ?></b> untuk menangani hewan kesayangan anda <b><?= $data->nama_hewan_vaksin; ?></b> </label>
                             <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
                             <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
                         </div>

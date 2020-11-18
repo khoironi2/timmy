@@ -6,6 +6,7 @@ class Boking_vaksin_model extends CI_model
     {
         $this->db->select('
         pasien.name as nama_pemilik,
+        pasien.alamat_users as alamat_pemilik,
         paketvaksin.nama_paket_vaksin,
         tbl_boking_vaksin.total_harga_vaksin,
         tbl_boking_vaksin.keterangan_tambahan_vaksin,

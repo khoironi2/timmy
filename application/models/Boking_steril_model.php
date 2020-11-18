@@ -4,9 +4,24 @@ class Boking_steril_model extends CI_model
 {
     public function getAll()
     {
-        $this->db->select('*');
-        $this->db->from('tbl_jadwal_dokter');
-        $this->db->join('tbl_users', 'tbl_users.id_users=tbl_jadwal_dokter.id_dokter');
+        $this->db->select('
+        pasien.name as nama_pemilik,
+        pasien.alamat_users as alamat_pemilik,
+        paketsteril.nama_paket_steril,
+        tbl_boking_steril.total_harga_steril,
+        tbl_boking_steril.keterangan_tambahan_steril,
+        tbl_boking_steril.nama_hewan_steril,
+        tbl_boking_steril.status_boking_steril,
+        tbl_boking_steril.id_boking_steril,
+        dokter.name as nama_dokter,
+        dokter.id_users as id_dokter
+        ');
+        $this->db->from('tbl_boking_steril');
+        $this->db->join('tbl_users as pasien', 'pasien.id_users=tbl_boking_steril.id_users_pet');
+        $this->db->join('tbl_users as dokter', 'dokter.id_users=tbl_boking_steril.id_dokter_steril');
+        $this->db->join('tbl_paket_steril as paketsteril', 'paketsteril.id_paket_steril=tbl_boking_steril.id_paket_steril');
+        $this->db->where('tbl_boking_steril.id_users_pet', $this->session->userdata('id_users'));
+
         $result = $this->db->get();
 
         return $result->result();
@@ -110,5 +125,21 @@ class Boking_steril_model extends CI_model
             return true;
         else
             return false;
+    }
+
+    public function getPById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_boking_steril');
+        $this->db->where('id_boking_steril', $id);
+
+        $result = $this->db->get();
+
+        return $result->row();
+    }
+    public function updateData($id, $data)
+    {
+        $this->db->where('id_boking_steril', $id);
+        $this->db->update('tbl_boking_steril', $data);
     }
 }
