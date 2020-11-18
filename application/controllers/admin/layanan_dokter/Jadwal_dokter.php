@@ -24,7 +24,8 @@ class Jadwal_dokter extends CI_Controller
             'halaman' => 'Data | Jadwal Dokter',
             'icon' => 'fas fa-calendar-alt',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
-            'dokter' => $this->db->get_where('tbl_users', ['level' => 'dokter'])->result_array()
+            'dokter' => $this->Dokter_model->getAllDokter(),
+            'dokterName' => $this->db->get_where('tbl_users', ['level' => 'dokter'])->result_array()
         ];
 
         $this->load->view('templates/header', $data);
@@ -55,9 +56,53 @@ class Jadwal_dokter extends CI_Controller
             ];
             $insert = $this->Jadwal_dokter_model->insert("tbl_jadwal_dokter", $data);
             if ($insert) {
-                $this->session->set_flashdata('success_login', 'Sukses, Data Berhasil Ditambah.');
+                $this->session->set_flashdata('message', '<div class="alert alert-success">Sukses, Data Berhasil Ditambah.</div>');
                 redirect('admin/layanan_dokter/jadwal_dokter');
             }
         }
+    }
+
+    public function update($id)
+    {
+        $data = [
+            'title' => 'Sistem informasi klinik pelayanan hewan',
+            'halaman' => 'Data | Update Jadwal Dokter',
+            'icon' => 'fas fa-calendar-alt',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'dokter' => $this->db->get_where('tbl_jadwal_dokter', ['id_jadwal' => $id])->row_array(),
+            'dokterName' => $this->db->get_where('tbl_users', ['level' => 'dokter'])->result_array()
+        ];
+
+        $this->form_validation->set_rules('hari', 'hari', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/topbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('admin/layanan_dokter/jadwal_dokter/update');
+            $this->load->view('templates/footer');
+        } else {
+            $id_dokter = $this->input->post('id');
+            $data = [
+                'hari' => $this->input->post('hari'),
+                'jam_mulai' => $this->input->post('jam_mulai'),
+                'jam_selesai' => $this->input->post('jam_selesai'),
+                'id_dokter' => $this->input->post('id_dokter')
+            ];
+
+            $this->db->where('id_jadwal', $id_dokter);
+            $this->db->update('tbl_jadwal_dokter', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Sukses, Data Berhasil Diubah.</div>');
+            redirect('admin/layanan_dokter/jadwal_dokter');
+        }
+    }
+
+    public function destroy($id)
+    {
+        $this->db->delete('tbl_jadwal_dokter', ['id_jadwal' => $id]);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Sukses, Data Berhasil Dihapus.</div>');
+        redirect('admin/layanan_dokter/jadwal_dokter');
     }
 }

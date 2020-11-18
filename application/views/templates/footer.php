@@ -33,11 +33,11 @@
 
 </html>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="jadwalDokterModal" tabindex="-1" role="dialog" aria-labelledby="jadwalDokterModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Jadwal dokter</h5>
+                <h5 class="modal-title" id="jadwalDokterModalLabel">Jadwal dokter</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -71,7 +71,7 @@
                         <label for="id_dokter" class="col-sm-2 col-form-label">Dokter</label>
                         <div class="col-sm-10">
                             <select name="id_dokter" class="form-control select2" style="width: 100%;" id="id_dokter" required multiple>
-                                <?php foreach ($dokter as $data) : ?>
+                                <?php foreach ($dokterName as $data) : ?>
                                     <option value="<?= $data['id_users']; ?>"><?= $data['name']; ?></option>
                                 <?php endforeach; ?>
                             </select>

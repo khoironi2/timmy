@@ -2,6 +2,15 @@
 
 class Dokter_model extends CI_Model
 {
+    public function getAllDokter()
+    {
+        $query = "SELECT `tbl_jadwal_dokter`.*, `tbl_users`.`name`
+        FROM `tbl_jadwal_dokter`
+        JOIN `tbl_users` ON `tbl_users`.`id_users` = `tbl_jadwal_dokter`.`id_dokter`";
+
+        return $this->db->query($query)->result_array();
+    }
+
     public function getAllPenjualan()
     {
         $query = "SELECT `tbl_penjualan`.*, `tbl_users`.`name`, `tbl_katalog`.`nama_katalog`
