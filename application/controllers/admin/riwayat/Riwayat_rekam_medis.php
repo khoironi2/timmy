@@ -23,7 +23,9 @@ class Riwayat_rekam_medis extends CI_Controller
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'halaman' => 'Data | Riwayat Rekam Medis',
-            'icon' => 'fas fa-user-md'
+            'icon' => 'fas fa-user-md',
+            'steril' => $this->Steril_model->getAllSteril(),
+            'vaksin' => $this->Vaksin_model->getAllVaksin(),
         ];
 
         $this->load->view('templates/header', $data);
