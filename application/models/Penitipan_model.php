@@ -1,0 +1,14 @@
+<?php 
+
+class Penitipan_model extends CI_Model
+{
+    public function getAllPenitipan()
+    {
+        $query = "SELECT `tbl_boking_penitipan`.*, `tbl_users`.`name`, `tbl_paket_penitpan`.`nama_paket_penitipan`
+                    FROM `tbl_boking_penitipan`
+              INNER JOIN `tbl_users` ON `tbl_users`.`id_users` = `tbl_boking_penitipan`.`id_users_pet`
+              INNER JOIN `tbl_paket_penitpan` ON `tbl_paket_penitpan`.`id_paket_penitipan` = `tbl_boking_penitipan`.`id_paket_penitipan`";
+
+        return $this->db->query($query)->result_array();
+    }
+}
