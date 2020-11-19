@@ -50,6 +50,15 @@
                                         <td><?= $data['nama_paket_vaksin']; ?></td>
                                         <td><?= $data['keterangan_tambahan_vaksin']; ?></td>
                                         <td><?= $data['total_harga_vaksin']; ?></td>
+                                        <td>
+                                            <?php if ($data['status_boking_vaksin'] == 'sudah') : ?>
+                                                <a href="<?= base_url('admin/layanan_dokter/vaksin/updateStatusSelesaiAdministrasi/' . $data['id_boking_vaksin']) ?>"><span class="badge badge-danger">Sudah Ditangani | Belum Administrasi </a>
+                                            <?php elseif ($data['status_boking_vaksin'] == 'selesai_administrasi') : ?>
+                                                <span class="badge badge-success">Selesai Administrasi </span>
+                                            <?php elseif ($data['status_boking_vaksin'] == 'visit_selesai') : ?>
+                                                <span class="badge badge-success">Terimakasih Dokter Atas Visit anda </span>
+                                            <?php endif; ?>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

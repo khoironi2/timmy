@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="row">
-        <div class="col-md-12">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         Info dokter
@@ -50,6 +50,15 @@
                                         <td><?= $data['nama_paket_steril']; ?></td>
                                         <td><?= $data['keterangan_tambahan_steril']; ?></td>
                                         <td><?= $data['total_harga_steril']; ?></td>
+                                        <td>
+                                            <?php if ($data['status_boking_steril'] == 'sudah') : ?>
+                                                <a href="<?= base_url('admin/layanan_dokter/steril/updateStatusSelesaiAdministrasi/' . $data['id_boking_steril']) ?>"><span class="badge badge-danger">Sudah Ditangani | Belum Administrasi </a>
+                                            <?php elseif ($data['status_boking_steril'] == 'selesai_administrasi') : ?>
+                                                <span class="badge badge-success">Selesai Administrasi </span>
+                                            <?php elseif ($data['status_boking_steril'] == 'visit_selesai') : ?>
+                                                <span class="badge badge-success">Terimakasih Dokter Atas Visit anda </span>
+                                            <?php endif; ?>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

@@ -43,6 +43,8 @@
                                 <td>
                                     <?php if ($data->status_boking_steril == 'sudah') : ?>
                                         <span class="badge badge-success">perSilahkan saudara/i <b><?= $data->nama_pemilik; ?></b> selesaikan pembyaran di Admin</span>
+                                    <?php elseif ($data->status_boking_steril == 'selesai_administrasi') : ?>
+                                        <span class="badge badge-success">Selesai Administrasi </span>
                                     <?php elseif ($data->status_boking_steril == 'belum') : ?>
                                         <span class="badge badge-primary">Pasien Baru</span>
                                     <?php elseif ($data->status_boking_steril == 'antri') : ?>

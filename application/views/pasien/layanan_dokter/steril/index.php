@@ -52,6 +52,8 @@
                                 <td>
                                     <?php if ($data->status_boking_steril == 'sudah') : ?>
                                         <span class="badge badge-success">Silahkan Selesaikan Pembayaran di Admin</span>
+                                    <?php elseif ($data->status_boking_steril == 'selesai_administrasi') : ?>
+                                        <span class="badge badge-success">Selesai Administrasi </span>
                                     <?php elseif ($data->status_boking_steril == 'belum') : ?>
                                         <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
                                         <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_steril ?>"><span class=" badge badge-danger">Visit Home</span></a>

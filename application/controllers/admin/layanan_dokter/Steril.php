@@ -33,4 +33,31 @@ class Steril extends CI_Controller
         $this->load->view('admin/layanan_dokter/steril/index');
         $this->load->view('templates/footer');
     }
+
+    public function updateStatusSelesaiAdministrasi($id)
+    {
+        $client = $this->Boking_steril_model->getPById($id);
+        $status_client = "";
+
+        if ($client->status_boking_steril == "sudah") {
+            $status_client = "selesai_administrasi";
+        } else {
+            $status_client = "selesai_administrasi";
+        }
+
+        $data = array(
+            'id_boking_steril'         => $id,
+            'status_boking_steril'     => $status_client
+        );
+        $data1 = array(
+            'id_status_antrian'         => $id,
+            'status_antrian_pasien'     => 'selesai_administrasi',
+            'time_update_antrian' => date('Y-m-d H:i:s')
+        );
+
+        $this->Boking_steril_model->updateData($id, $data);
+        $this->Antrian_pasien_model->update($id, $data1);
+
+        redirect(site_url('admin/layanan_dokter/steril'));
+    }
 }
