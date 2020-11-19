@@ -34,6 +34,18 @@ class Groming extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function total()
+    {
+        $data = [
+            'title' => 'Sistem informasi klinik pelayanan hewan',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'halaman' => 'Data | Groming',
+            'icon' => 'fas fa-paw',
+            'total' => $this->Groming_model->getGromingReady()
+        ];
+        $this->load->view('admin/pets_care/groming/total', $data);
+    }
+
     public function create()
     {
         $data = [

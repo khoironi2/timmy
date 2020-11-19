@@ -26,8 +26,6 @@
 
         $('.select2').select2();
     });
-
-    
 </script>
 </body>
 
@@ -77,12 +75,22 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
             </form>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    setInterval(function() {
+        auto_refresh_function();
+    }, 500);
+
+    function auto_refresh_function() {
+        $('#tampil').load('http://localhost/sikph/admin/pets_care/groming/total');
+    }
+</script>

@@ -7,7 +7,8 @@
                         <i class="metismenu-icon <?= $icon; ?> icon-gradient bg-mean-fruit"></i>
                         </i>
                     </div>
-                    <div><?= $halaman; ?></div>
+                    <div>Jumlah <?= $halaman; ?> Hari Ini : <b> <span id="tampil"></span></b>
+                    </div>
                 </div>
                 <div class="page-title-actions">
                     <div class="d-inline-block dropdown">
