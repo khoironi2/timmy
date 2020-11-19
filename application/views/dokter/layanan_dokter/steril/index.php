@@ -42,16 +42,25 @@
                                 <td><?= $data->total_harga_steril; ?></td>
                                 <td>
                                     <?php if ($data->status_boking_steril == 'sudah') : ?>
-                                        <span class="badge badge-success">Selesai</span>
+                                        <span class="badge badge-success">perSilahkan saudara/i <b><?= $data->nama_pemilik; ?></b> selesaikan pembyaran di Admin</span>
                                     <?php elseif ($data->status_boking_steril == 'belum') : ?>
-                                        <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
-                                        <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_steril ?>"><span class=" badge badge-danger">Visit Home</span></a>
+                                        <span class="badge badge-primary">Pasien Baru</span>
                                     <?php elseif ($data->status_boking_steril == 'antri') : ?>
-                                        <span class="badge badge-warning">Sedang Antri</span>
+                                        <a data-toggle="modal" data-target="#antrianmasuk<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">Sedang Antri</span></a>
+                                    <?php elseif ($data->status_boking_steril == 'waiting') : ?>
+                                        <a data-toggle="modal" data-target="#persilahkanmasuk<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">Persilahkan Masuk</span></a>
+                                    <?php elseif ($data->status_boking_steril == 'giliran_anda') : ?>
+                                        <a data-toggle="modal" data-target="#periksa<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">sedang menunggu saudara/i <?= $data->nama_pemilik; ?></span></a>
+                                    <?php elseif ($data->status_boking_steril == 'mulai') : ?>
+                                        <a data-toggle="modal" data-target="#selesaikan<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">sedang menerima peliharaan saudara/i <?= $data->nama_pemilik; ?></span></a>
                                     <?php elseif ($data->status_boking_steril == 'visit') : ?>
-                                        <span class="badge badge-warning">Dokter Sedang Bersiap Kesitu</span>
+                                        <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_steril ?>"><span class=" badge badge-danger">Segera visit Pasien !</span></a>
+                                    <?php elseif ($data->status_boking_steril == 'menuju') : ?>
+                                        <a data-toggle="modal" data-target="#ditanganiModal<?= $data->id_boking_steril ?>"><span class=" badge badge-danger">Hati Hati di jalan Dokter <b><?= $data->nama_dokter; ?></b> !</span></a>
+                                    <?php elseif ($data->status_boking_steril == 'ditangani') : ?>
+                                        <a data-toggle="modal" data-target="#VisitSelesaiModal<?= $data->id_boking_steril ?>"><span class="badge badge-danger">Sedang ditangani Dokter <b><?= $data->nama_dokter; ?></b> </span></a>
                                     <?php elseif ($data->status_boking_steril == 'visit_selesai') : ?>
-                                        <span class="badge badge-success">Kunjungan Dokter Selesai</span>
+                                        <span class="badge badge-success">Terimakasih Dokter <b><?= $data->nama_dokter; ?></b> Atas Visit anda </span>
                                     <?php endif; ?>
                                 </td>
 
@@ -68,99 +77,126 @@
 </div>
 </div>
 
-<!-- start area modal tambah boking vaksin -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Boking steril</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form autocomplete="off" action="<?= base_url('pasien/layanan_dokter/steril/insert') ?>" method="POST">
-
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Nama Hewan</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="nama_hewan_steril" class="form-control" placeholder="nama peliharaan" id="nama_hewan_steril" required>
-                            <input type="text" hidden name="id_users_pet" value="<?= $user['id_users'] ?>" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="id_paket_vaksin" class="col-sm-2 col-form-label">Paket Vaksin</label>
-                        <div class="col-sm-10">
-                            <input list="data_santri" type="text" name="id_paket_steril" id="id_paket_steril" class="form-control" placeholder="paket vaksin" onchange="return autofillSteril();">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Jenis Paket</label>
-                        <div class="col-sm-10">
-                            <input readonly class="form-control-plaintext" type="text" id="nama_paket_steril">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="id_dokter" class="col-sm-2 col-form-label">Dokter</label>
-                        <div class="col-sm-10">
-                            <select name="id_dokter_steril" class="form-control select2" style="width: 100%;" id="id_dokter_vaksin" required multiple>
-                                <?php foreach ($dokter as $data) : ?>
-                                    <option value="<?= $data['id_users']; ?>"><?= $data['name']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="harga_paket_vaksin" class="col-sm-2 col-form-label">Total</label>
-                        <div class="col-sm-10">
-                            <input readonly name="total_harga_steril" class="form-control-plaintext" type="text" id="harga_paket_steril" required>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<datalist id="data_santri">
-    <?php
-    foreach ($record->result() as $b) {
-        echo "<option value='$b->id_paket_steril'> $b->nama_paket_steril </option>";
-    }
-    ?>
-</datalist>
-
-<!-- end area modal tambah boking vaksin -->
-
 
 <!-- start modal ikut antri -->
 <?php $no = 1;
 foreach ($boking as $data) : ?>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="antrianmasuk<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> Halo <?= $data->nama_pemilik ?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo dok <?= $data->nama_dokter ?></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('pasien/layanan_dokter/steril/updateStatusW/' . $data->id_boking_steril) ?>" method="POST">
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusWaiting/' . $data->id_boking_steril) ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan mengikuti antrian untuk hewan kesayangan anda <b><?= $data->nama_hewan_steril; ?></b> </label>
+                            <label for="exampleFormControlFile1">Halo dok <b><?= $data->nama_dokter ?></b> anda akan menerima dan mempersilahkan <b><?= $data->nama_pemilik ?></b> untuk menunggu sebentar ? </b> </label>
                             <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
                             <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-warning">Ikut</button>
+                        <button type="submit" class="btn btn-warning">Oke Tunggu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="persilahkanmasuk<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo dok <?= $data->nama_dokter ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusPersilahkanMasuk/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo dok <b><?= $data->nama_dokter ?></b> anda akan mempersilahkan masuk <b><?= $data->nama_pemilik ?></b> ! </b> </label>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning">silahkan masuk</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="periksa<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo dok <?= $data->nama_dokter ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusPeriksa/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo dok <b><?= $data->nama_dokter ?></b> apakah saudara/i: <b><?= $data->nama_pemilik ?></b> sudah diruangan ?. jika iya silahkan mulai periksa ! </b> </label>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning">mulai periksa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="selesaikan<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo dok <?= $data->nama_dokter ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusSelesaiPeriksa/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo dok <b><?= $data->nama_dokter ?></b> apakah peliharaan saudara/i: <b><?= $data->nama_pemilik ?></b> sudah diperiksa ?. jika iya silahkan selesaikan periksa ! dan PERSILAHKAN SAUDARA/I <b><?= $data->nama_pemilik ?></b> SELESAIKAN PEMBYARAN DI ADMIN</b> </label>
+                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
+                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="keterangan_tambahan_steril" id="keterangan_tambahan_steril" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning">selesai periksa</button>
                     </div>
                 </form>
             </div>
@@ -178,22 +214,83 @@ foreach ($boking as $data) : ?>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> Halo <?= $data->nama_pemilik ?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo Dokter : <?= $data->nama_dokter ?></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('pasien/layanan_dokter/steril/updateStatusandVisit/' . $data->id_boking_steril) ?>" method="POST">
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusandVisit/' . $data->id_boking_steril) ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Halo kak <b><?= $data->nama_pemilik ?></b> anda akan meminta tim kami untuk visit ke : <b><?= $data->alamat_pemilik ?></b> untuk menangani hewan kesayangan anda <b><?= $data->nama_hewan_steril; ?></b> </label>
-                            <input type="text" hidden name="id_pasien" value="<?= $user['id_users'] ?>">
-                            <input type="text" hidden name="id_dokter" value="<?= $data->id_dokter; ?>">
+                            <label for="exampleFormControlFile1">Halo dok : <b><?= $data->nama_dokter ?></b> pasien <b><?= $data->nama_pemilik ?></b> meminta anda untuk visit ke : <b><?= $data->alamat_pemilik ?></b> untuk menangani hewan <b><?= $data->nama_hewan_steril; ?></b> </label>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-danger">Visit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="ditanganiModal<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo Dokter : <?= $data->nama_dokter ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusandVisitTangani/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo dok : <b><?= $data->nama_dokter ?></b> jika sudah samapai di kediaman : <b><?= $data->nama_pemilik ?></b> di : <b><?= $data->alamat_pemilik ?></b> segera tangani hewan : <b><?= $data->nama_hewan_steril; ?></b> </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-success">Tangani</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+<!-- end ikut antri -->
+
+<!-- start modal ikut antri -->
+<?php $no = 1;
+foreach ($boking as $data) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="VisitSelesaiModal<?= $data->id_boking_steril ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Halo Dokter : <?= $data->nama_dokter ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('dokter/layanan_dokter/steril/updateStatusandVisitCatatanMedis/' . $data->id_boking_steril) ?>" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Halo dok : <b><?= $data->nama_dokter ?></b> jika hewan : <b><?= $data->nama_hewan_steril; ?></b> sudah ditangani silahkan konfirmasi </label>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="keterangan_tambahan_steril" id="keterangan_tambahan_steril" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning">Konfirmasi</button>
                     </div>
                 </form>
             </div>

@@ -51,16 +51,26 @@
                                 <td><?= $data->total_harga_steril; ?></td>
                                 <td>
                                     <?php if ($data->status_boking_steril == 'sudah') : ?>
-                                        <span class="badge badge-success">Selesai</span>
+                                        <span class="badge badge-success">Silahkan Selesaikan Pembayaran di Admin</span>
                                     <?php elseif ($data->status_boking_steril == 'belum') : ?>
                                         <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_steril ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
                                         <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_steril ?>"><span class=" badge badge-danger">Visit Home</span></a>
                                     <?php elseif ($data->status_boking_steril == 'antri') : ?>
                                         <span class="badge badge-warning">Sedang Antri</span>
+                                    <?php elseif ($data->status_boking_steril == 'waiting') : ?>
+                                        <span class="badge badge-warning">Tunggu sampai anda dipanggil</span>
+                                    <?php elseif ($data->status_boking_steril == 'giliran_anda') : ?>
+                                        <span class="badge badge-success">silahkan masuk ke ruangan dokter : <b><?= $data->nama_dokter; ?></b></span>
+                                    <?php elseif ($data->status_boking_steril == 'mulai') : ?>
+                                        <span class="badge badge-success">peliharaan sedang diperiksa dokter : <b><?= $data->nama_dokter; ?></b></span>
                                     <?php elseif ($data->status_boking_steril == 'visit') : ?>
                                         <span class="badge badge-warning">Dokter Sedang Bersiap Kesitu</span>
+                                    <?php elseif ($data->status_boking_steril == 'menuju') : ?>
+                                        <span class="badge badge-warning">Dokter <b><?= $data->nama_dokter; ?></b> Sedang dalam perjalanan ke tempat anda </span>
+                                    <?php elseif ($data->status_boking_steril == 'ditangani') : ?>
+                                        <span class="badge badge-danger">Sedang ditangani Dokter <b><?= $data->nama_dokter; ?></b> </span>
                                     <?php elseif ($data->status_boking_steril == 'visit_selesai') : ?>
-                                        <span class="badge badge-success">Kunjungan Dokter Selesai</span>
+                                        <span class="badge badge-success">Visit Dokter Selesai</span>
                                     <?php endif; ?>
                                 </td>
 
