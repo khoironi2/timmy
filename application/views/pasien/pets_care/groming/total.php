@@ -1,12 +1,12 @@
 <?php foreach ($total as $data) : ?>
     <?php if ($data->count >= '5') : ?>
         <div class="d-inline-block dropdown">
-            <a class="btn-shadow btn btn-danger">
+            <button class="btn-shadow btn btn-danger" type="button" disabled>
                 <span class="btn-icon-wrapper pr-2 opacity-7">
                     <i class="fas fa-business-time fa-w-20"></i>
                 </span>
-                Close Groming
-            </a>
+                Close Groming!
+            </button>
         </div>
     <?php elseif ($data->count <= '5') : ?>
         <div class="d-inline-block dropdown">
