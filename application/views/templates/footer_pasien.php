@@ -76,11 +76,27 @@
         });
     }
 
+    function autofillPenitipan() {
+        var id_paket_penitipan = document.getElementById('id_paket_penitipan').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>pasien/pets_care/penitipan/cari",
+            data: '&id_paket_penitipan=' + id_paket_penitipan,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_penitipan').value = val.id_paket_penitipan;
+                    document.getElementById('nama_paket_penitipan').value = val.nama_paket_penitipan;
+                    document.getElementById('harga_paket_penitipan').value = val.harga_paket_penitipan;
+                });
+            }
+        });
+    }
+
     function total() {
-        var as = parseInt(document.getElementById('berat_penjualan').value);
-        var ad = parseInt(document.getElementById('harga_katalog').value);
+        var as = parseInt(document.getElementById('jumlah_hari_penitipan').value);
+        var ad = parseInt(document.getElementById('harga_paket_penitipan').value);
         var jumlah_harga = as * ad;
-        document.getElementById('total_penjualan').value = jumlah_harga;
+        document.getElementById('total_harga_penitipan').value = jumlah_harga;
     }
 </script>
 </body>
