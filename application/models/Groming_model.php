@@ -22,4 +22,14 @@ class Groming_model extends CI_Model
 
         return $result->result();
     }
+    public function getGromingReady()
+    {
+        $this->db->select('*, COUNT(*) as count');
+
+        $this->db->from('tbl_boking_groming');
+        $this->db->where('date_groming', date('Y-m-d'));
+        $result = $this->db->get();
+
+        return $result->result();
+    }
 }

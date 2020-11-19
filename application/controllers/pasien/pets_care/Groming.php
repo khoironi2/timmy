@@ -24,7 +24,8 @@ class Groming extends CI_Controller
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'halaman' => 'Data | Groming',
             'icon' => 'fas fa-paw',
-            'groming' => $this->Groming_model->getAllMyGroming()
+            'groming' => $this->Groming_model->getAllMyGroming(),
+            'total' => $this->Groming_model->getGromingReady()
         ];
 
         $this->load->view('templates/header', $data);
@@ -61,6 +62,8 @@ class Groming extends CI_Controller
                 'dijemput' => $this->input->post('dijemput'),
                 'keterangan_tambahan_groming' => $this->input->post('keterangan_tambahan_groming'),
                 'total_harga_groming' => $this->input->post('total_harga_groming'),
+                'time_create_boking_groming' => date('Y-m-d H:i:s'),
+                'date_groming' => date('Y-m-d')
             ];
 
             $this->db->insert('tbl_boking_groming', $data);
