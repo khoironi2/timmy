@@ -34,4 +34,56 @@ class Riwayat_rekam_medis extends CI_Controller
         $this->load->view('admin/riwayat/riwayat_rekam_medis/index');
         $this->load->view('templates/footer');
     }
+    public function laporan_steril_pdf()
+    {
+        $this->load->library('dompdf_gen');
+
+        $keyword1 = $this->input->post('keyword1');
+        $keyword2 = $this->input->post('keyword2');
+        $data = [
+            'awal' =>  $keyword1,
+            'akhir' => $keyword2,
+            // 'totalpenjualan' => $this->Steril_model->getAllSteril($keyword1, $keyword2),
+            // 'totalpenjualan' => $this->Penjualan_model->getTotalPenjualan(),
+            'logo' => '<img src="assets/img/sample/apple.png" alt="" class="mr-3" height="50">',
+            'gambar' => 'assets/img/perbaikan/'
+        ];
+        $data['nasabah'] = $this->Steril_model->getAllSterilByDate($keyword1, $keyword2);
+        $this->load->view('admin/riwayat/riwayat_rekam_medis/laporan/pdf/Steril', $data);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_data_steril.pdf", ['Attachment' => 0]);
+    }
+    public function laporan_vaksin_pdf()
+    {
+        $this->load->library('dompdf_gen');
+
+        $keyword1 = $this->input->post('keyword1');
+        $keyword2 = $this->input->post('keyword2');
+        $data = [
+            'awal' =>  $keyword1,
+            'akhir' => $keyword2,
+            // 'totalpenjualan' => $this->Steril_model->getAllSteril($keyword1, $keyword2),
+            // 'totalpenjualan' => $this->Penjualan_model->getTotalPenjualan(),
+            'logo' => '<img src="assets/img/sample/apple.png" alt="" class="mr-3" height="50">',
+            'gambar' => 'assets/img/perbaikan/'
+        ];
+        $data['nasabah'] = $this->Vaksin_model->getAllVaksinByDate($keyword1, $keyword2);
+        $this->load->view('admin/riwayat/riwayat_rekam_medis/laporan/pdf/Vaksin', $data);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_data_vaksin.pdf", ['Attachment' => 0]);
+    }
 }

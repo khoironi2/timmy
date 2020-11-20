@@ -8,13 +8,13 @@
                             <h3 class="animated">We keep pets for pleasure.</h3>
                             <h1 class="animated">Food & Vitamins <br>For all Pets</h1>
                             <div class="slider-btn">
-                                <a class="animated" href="product-details.html">GROMING NOW</a>
+                                <a class="animated" href="<?php base_url('/auth') ?>">GROMING NOW</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12 col-sm-5">
                         <div class="slider-single-img slider-animated-1">
-                            <img class="animated" src="<?= base_url('assets/frontend') ?>/images/header/unnamed.png" alt="">
+                            <img class="animated" src="<?= base_url('assets/frontend') ?>/images/header/unnamed3.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                             <h3 class="animated">We keep pets for pleasure.</h3>
                             <h1 class="animated">Food & Vitamins <br>For all Pets</h1>
                             <div class="slider-btn">
-                                <a class="animated" href="product-details.html">GROMING NOW</a>
+                                <a class="animated" href="<?php base_url('/auth') ?>">GROMING NOW</a>
                             </div>
                         </div>
                     </div>

@@ -10,6 +10,21 @@
     </div>
 </div>
 <div class="row">
+    <div class="container mb-0">
+        <div class="row justify-content-center">
+            <form action="<?= base_url('admin/riwayat/riwayat_rekam_medis/laporan_steril_pdf'); ?>" method="POST" class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="dari">Dari </label>
+                    <input type="datetime-local" class="form-control ml-2" id="dari" name="keyword1">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="sampai">Sampai </label>
+                    <input type="datetime-local" class="form-control ml-2" id="sampai" name="keyword2">
+                </div>
+                <button type="submit" class="au-btn btn-danger m-b-20"><i class="far fa-file-pdf"></i> cetak</button>
+            </form>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -50,6 +65,21 @@
 
 <div class="row mt-5">
     <div class="col-md-12">
+        <div class="container mb-0">
+            <div class="row justify-content-center">
+                <form action="<?= base_url('admin/riwayat/riwayat_rekam_medis/laporan_vaksin_pdf'); ?>" method="POST" class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="dari">Dari </label>
+                        <input type="datetime-local" class="form-control ml-2" id="dari" name="keyword1">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="sampai">Sampai </label>
+                        <input type="datetime-local" class="form-control ml-2" id="sampai" name="keyword2">
+                    </div>
+                    <button type="submit" class="au-btn btn-danger m-b-20"><i class="far fa-file-pdf"></i> cetak</button>
+                </form>
+            </div>
+        </div>
         <div class="card">
             <div class="card-header">
                 Info Riwayat Vaksin
