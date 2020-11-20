@@ -23,6 +23,7 @@ class Antrian_pasien extends CI_Controller
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Antrian Pasien',
             'icon' => 'fas fa-pen-square',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'antriansteril' => $this->Antrian_pasien_model->getAllSterilInDokter(),
             'antrianvaksin' => $this->Antrian_pasien_model->getAllVaksinInDokter()
         ];
