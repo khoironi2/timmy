@@ -24,6 +24,10 @@ class Dashboard extends CI_Controller
             'halaman' => 'Data | Dashboard',
             'icon' => 'fas fa-tachometer-alt',
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+            'totalvaksin' => $this->Dashboard_model->getTotalVaksin(),
+            'totalsteril' => $this->Dashboard_model->getTotalSteril(),
+            'totalgroming' => $this->Dashboard_model->getTotalGroming(),
+            'totalpenitipan' => $this->Dashboard_model->getTotalPenitipan(),
         ];
 
         $this->load->view('templates/header', $data);
