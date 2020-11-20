@@ -31,60 +31,79 @@
 
 </html>
 
-<div class="modal fade" id="jadwalDokterModal" tabindex="-1" role="dialog" aria-labelledby="jadwalDokterModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="jadwalDokterModalLabel">Jadwal dokter</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form autocomplete="off" action="<?= base_url('admin/layanan_dokter/jadwal_dokter/insert') ?>" method="POST">
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Hari</label>
-                        <div class="col-sm-10">
-                            <select name="hari" class="form-control select2" style="width: 100%;" id="hari" required multiple>
-                                <option value="senin">Senin</option>
-                                <option value="selasa">Selasa</option>
-                                <option value="rabu">Rabu</option>
-                                <option value="kamis">Kamis</option>
-                                <option value="jumat">Jumat</option>
-                                <option value="sabtu">Sabtu</option>
-                                <option value="minggu">Minggu</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Jam</label>
-                        <div class="col">
-                            <input type="time" name="jam_mulai" class="form-control" placeholder="Jam Mulai" required>
-                        </div>
-                        <div class="col">
-                            <input type="time" name="jam_selesai" class="form-control" placeholder="Jam Tutup" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="id_dokter" class="col-sm-2 col-form-label">Dokter</label>
-                        <div class="col-sm-10">
-                            <select name="id_dokter" class="form-control select2" style="width: 100%;" id="id_dokter" required multiple>
-                                <?php foreach ($dokterName as $data) : ?>
-                                    <option value="<?= $data['id_users']; ?>"><?= $data['name']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
 
+<script>
+    function autofill() {
+        var id_paket_vaksin = document.getElementById('id_paket_vaksin').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>pasien/layanan_dokter/vaksin/cari",
+            data: '&id_paket_vaksin=' + id_paket_vaksin,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_vaksin').value = val.id_paket_vaksin;
+                    document.getElementById('nama_paket_vaksin').value = val.nama_paket_vaksin;
+                    document.getElementById('harga_paket_vaksin').value = val.harga_paket_vaksin;
+                });
+            }
+        });
+    }
+
+    function autofillSteril() {
+        var id_paket_steril = document.getElementById('id_paket_steril').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>pasien/layanan_dokter/steril/cari",
+            data: '&id_paket_steril=' + id_paket_steril,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_steril').value = val.id_paket_steril;
+                    document.getElementById('nama_paket_steril').value = val.nama_paket_steril;
+                    document.getElementById('harga_paket_steril').value = val.harga_paket_steril;
+                });
+            }
+        });
+    }
+
+    function autofillGroming() {
+        var id_paket_groming = document.getElementById('id_paket_groming').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>admin/pets_care/groming/cari",
+            data: '&id_paket_groming=' + id_paket_groming,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_groming').value = val.id_paket_groming;
+                    document.getElementById('nama_paket_groming').value = val.nama_paket_groming;
+                    document.getElementById('harga_paket_groming').value = val.harga_paket_groming;
+                });
+            }
+        });
+    }
+
+    function autofillPenitipan() {
+        var id_paket_penitipan = document.getElementById('id_paket_penitipan').value;
+        $.ajax({
+            url: "<?php echo base_url('/'); ?>admin/pets_care/penitipan/cari",
+            data: '&id_paket_penitipan=' + id_paket_penitipan,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+                $.each(hasil, function(key, val) {
+                    document.getElementById('id_paket_penitipan').value = val.id_paket_penitipan;
+                    document.getElementById('nama_paket_penitipan').value = val.nama_paket_penitipan;
+                    document.getElementById('harga_paket_penitipan').value = val.harga_paket_penitipan;
+                });
+            }
+        });
+    }
+
+    function total() {
+        var as = parseInt(document.getElementById('jumlah_hari_penitipan').value);
+        var ad = parseInt(document.getElementById('harga_paket_penitipan').value);
+        var jumlah_harga = as * ad;
+        document.getElementById('total_harga_penitipan').value = jumlah_harga;
+    }
+</script>
 <script type="text/javascript">
     setInterval(function() {
         auto_refresh_function();

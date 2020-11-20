@@ -34,6 +34,13 @@ class Groming extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function cari()
+    {
+        $id_paket_groming = $_GET['id_paket_groming'];
+        $cari = $this->Paket_groming_model->cari($id_paket_groming)->result();
+        echo json_encode($cari);
+    }
+
     public function total()
     {
         $data = [
@@ -56,7 +63,7 @@ class Groming extends CI_Controller
             'users' => $this->db->get_where('tbl_users', ['level' => 'pasien'])->result_array(),
             'pakets' => $this->db->get('tbl_paket_groming')->result_array()
         ];
-
+        $data['record'] =  $this->Paket_groming_model->tampil_data();
         $this->form_validation->set_rules('id_pasien', 'pasien', 'required');
 
         if ($this->form_validation->run() == false) {

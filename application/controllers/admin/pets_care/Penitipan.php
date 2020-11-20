@@ -33,6 +33,12 @@ class Penitipan extends CI_Controller
         $this->load->view('admin/pets_care/penitipan/index');
         $this->load->view('templates/footer');
     }
+    public function cari()
+    {
+        $id_paket_penitipan = $_GET['id_paket_penitipan'];
+        $cari = $this->Paket_penitipan_model->cari($id_paket_penitipan)->result();
+        echo json_encode($cari);
+    }
 
     public function create()
     {
@@ -44,7 +50,7 @@ class Penitipan extends CI_Controller
             'users' => $this->db->get_where('tbl_users', ['level' => 'pasien'])->result_array(),
             'pakets' => $this->db->get('tbl_paket_penitpan')->result_array(),
         ];
-
+        $data['record'] =  $this->Paket_penitipan_model->tampil_data();
         $this->form_validation->set_rules('id_users_pet', 'pasien', 'required');
 
         if ($this->form_validation->run() == false) {
