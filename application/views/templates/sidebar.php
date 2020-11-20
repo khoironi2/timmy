@@ -91,31 +91,31 @@
                         <li class="app-sidebar__heading">Data Master</li>
                         <li>
                             <a href="<?= base_url('admin/paket/vaksin'); ?>">
-                                <i class="metismenu-icon fas fa-user-md"></i>
+                                <i class="metismenu-icon fas fa-dumpster"></i>
                                 Paket vaksin
                             </a>
                         </li>
                         <li>
                             <a href="<?= base_url('admin/paket/steril'); ?>">
-                                <i class="metismenu-icon fas fa-user-md"></i>
+                                <i class="metismenu-icon fas fa-dumpster"></i>
                                 Paket steril
                             </a>
                         </li>
                         <li>
                             <a href="<?= base_url('admin/paket/groming'); ?>">
-                                <i class="metismenu-icon fas fa-user-md"></i>
+                                <i class="metismenu-icon fas fa-dumpster"></i>
                                 Paket groming
                             </a>
                         </li>
                         <li>
                             <a href="<?= base_url('admin/paket/penitipan'); ?>">
-                                <i class="metismenu-icon fas fa-user-md"></i>
+                                <i class="metismenu-icon fas fa-dumpster"></i>
                                 Paket penitipan
                             </a>
                         </li>
                         <li class="app-sidebar__heading">Settings</li>
                         <li>
-                            <a href="<?= base_url('admin/settings/'); ?>">
+                            <a href="<?= base_url('admin/profile/'); ?>">
                                 <i class="metismenu-icon fas fa-user"></i>
                                 Profile
                             </a>
