@@ -13,7 +13,7 @@
                     <span class="btn-icon-wrapper pr-2 opacity-7">
                         <i class="fas fa-business-time fa-w-20"></i>
                     </span>
-                    Buttons
+                    + Vaksin Now
                 </a>
             </div>
         </div>

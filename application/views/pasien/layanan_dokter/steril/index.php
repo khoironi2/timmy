@@ -14,7 +14,7 @@
                     <span class="btn-icon-wrapper pr-2 opacity-7">
                         <i class="fas fa-business-time fa-w-20"></i>
                     </span>
-                    Buttons
+                    + Steril Now
                 </a>
             </div>
         </div>
@@ -25,7 +25,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Info Vaksin
+                Info Steril
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="datatable">
