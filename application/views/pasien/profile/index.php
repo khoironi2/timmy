@@ -8,15 +8,18 @@
             <div><?= $halaman; ?></div>
         </div>
     </div>
+    <br>
+    <?= $this->session->flashdata('message'); ?>
 </div>
 <form action="<?= base_url('pasien/profile/index'); ?>" method="POST" enctype="multipart/form-data">
     <div class="row">
-        <?= $this->session->flashdata('message'); ?>
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
                     Profile Info
                 </div>
+
                 <div class="card-body">
                     <div class="form-group">
                         <label for="name">Nama</label>
@@ -85,6 +88,8 @@
                             <label class="custom-file-label" for="gambar_users">Choose file</label>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
