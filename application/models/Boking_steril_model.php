@@ -13,6 +13,7 @@ class Boking_steril_model extends CI_model
         tbl_boking_steril.nama_hewan_steril,
         tbl_boking_steril.status_boking_steril,
         tbl_boking_steril.id_boking_steril,
+        tbl_boking_steril.time_create_boking_steril,
         dokter.name as nama_dokter,
         dokter.id_users as id_dokter
         ');
@@ -37,6 +38,7 @@ class Boking_steril_model extends CI_model
         tbl_boking_steril.nama_hewan_steril,
         tbl_boking_steril.status_boking_steril,
         tbl_boking_steril.id_boking_steril,
+        tbl_boking_steril.time_create_boking_steril,
         dokter.name as nama_dokter,
         dokter.id_users as id_dokter
         ');

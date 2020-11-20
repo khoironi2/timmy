@@ -13,6 +13,7 @@ class Boking_vaksin_model extends CI_model
         tbl_boking_vaksin.nama_hewan_vaksin,
         tbl_boking_vaksin.status_boking_vaksin,
         tbl_boking_vaksin.id_boking_vaksin,
+        tbl_boking_vaksin.time_create_boking_vaksin,
         dokter.name as nama_dokter,
         dokter.id_users as id_dokter
         ');
@@ -37,6 +38,7 @@ class Boking_vaksin_model extends CI_model
         tbl_boking_vaksin.nama_hewan_vaksin,
         tbl_boking_vaksin.status_boking_vaksin,
         tbl_boking_vaksin.id_boking_vaksin,
+        tbl_boking_vaksin.time_create_boking_vaksin,
         dokter.name as nama_dokter,
         dokter.id_users as id_dokter
         ');

@@ -73,6 +73,7 @@ class Groming extends CI_Controller
                 'dijemput' => $this->input->post('dijemput'),
                 'keterangan_tambahan_groming' => $this->input->post('keterangan_tambahan_groming'),
                 'total_harga_groming' => $this->input->post('total_harga_groming'),
+                'time_create_boking_groming' => date('Y-m-d H:i:s'),
             ];
 
             $this->db->insert('tbl_boking_groming', $data);

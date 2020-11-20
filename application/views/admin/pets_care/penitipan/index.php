@@ -34,6 +34,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Tanggal</th>
                                     <th scope="col">Pasien</th>
                                     <th scope="col">Hewan</th>
                                     <th scope="col">Jumlah Hari</th>
@@ -48,11 +49,12 @@
                                 <?php foreach ($penitipan as $data) : ?>
                                     <tr>
                                         <th scope="row"><?= $no++; ?></th>
+                                        <td><?= $data['time_create_boking_penitipan']; ?></td>
                                         <td><?= $data['name']; ?></td>
                                         <td><?= $data['nama_hewan_penitipan']; ?></td>
                                         <td><?= $data['jumlah_hari_penitipan']; ?></td>
                                         <td><?= $data['nama_paket_penitipan']; ?></td>
-                                        <td><?= $data['keterangan_tambahan_steril']; ?></td>
+                                        <td><?= $data['keterangan_tambahan_penitipan']; ?></td>
                                         <td><?= $data['total_harga_penitipan']; ?></td>
                                         <td>
                                             <a href="<?= base_url('admin/pets_care/penitipan/update/' . $data['id_boking_penitipan']); ?>" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>

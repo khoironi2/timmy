@@ -60,7 +60,7 @@
 
                             <div class="form-group">
                                 <label for="keterangan_tambahan_steril">keterangan tambahan</label>
-                                <input type="text" class="form-control" id="keterangan_tambahan_steril" name="keterangan_tambahan_steril" required>
+                                <input type="text" class="form-control" id="keterangan_tambahan_penitipan" name="keterangan_tambahan_penitipan" required>
                             </div>
 
                             <div class="form-group">
@@ -77,5 +77,3 @@
             </div>
         </div>
     </div>
-
-    

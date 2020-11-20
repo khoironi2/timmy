@@ -22,6 +22,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Tanggal</th>
                                     <th scope="col">Nama Pet</th>
                                     <th scope="col">Hewan</th>
                                     <th scope="col">Paket Steril</th>
@@ -34,6 +35,7 @@
                                 <?php foreach ($steril as $data) : ?>
                                     <tr>
                                         <th scope="row"><?= $no++; ?></th>
+                                        <td><?= $data['time_create_boking_steril'] ?></td>
                                         <td><?= $data['name'] ?></td>
                                         <td><?= $data['nama_hewan_steril']; ?></td>
                                         <td><?= $data['nama_paket_steril']; ?></td>
@@ -59,6 +61,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Tanggal</th>
                                     <th scope="col">Pasien</th>
                                     <th scope="col">Nama Hewan</th>
                                     <th scope="col">Paket Vaksin</th>
@@ -71,6 +74,7 @@
                                 <?php foreach ($vaksin as $data) : ?>
                                     <tr>
                                         <th scope="row"><?= $no++; ?></th>
+                                        <td><?= $data['time_create_boking_vaksin']; ?></td>
                                         <td><?= $data['name']; ?></td>
                                         <td><?= $data['nama_hewan_vaksin']; ?></td>
                                         <td><?= $data['nama_paket_vaksin']; ?></td>

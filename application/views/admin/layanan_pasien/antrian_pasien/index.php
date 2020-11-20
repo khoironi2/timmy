@@ -34,7 +34,6 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Pasien</th>
                                     <th scope="col">Dokter</th>
-                                    <th scope="col">Nomor Antrian</th>
                                     <th scope="col">Status</th>
                                     <!-- <th scope="col">Aksi</th> -->
                                 </tr>
@@ -42,22 +41,21 @@
                             <tbody>
                                 <?php $no = 1; ?>
                                 <?php foreach ($antrian as $data) : ?>
-                                <tr>
-                                    <th scope="row"><?= $no++; ?></th>
-                                    <td><?= $data['name']; ?></td>
-                                    <td><?= $data['name']; ?></td>
-                                    <td><?= $data['nomor_antrian_pasien']; ?></td>
-                                    <?php if ($data['status_antrian_pasien'] == 'sudah') : ?>
-                                        <td><span class="badge badge-success"><?= $data['status_antrian_pasien']; ?></span></td>
-                                    <?php elseif ($data['status_antrian_pasien'] == 'mulai') : ?>
-                                        <td><span class="badge badge-warning"><?= $data['status_antrian_pasien']; ?></span></td>
-                                    <?php else : ?>
-                                        <td><span class="badge badge-danger"><?= $data['status_antrian_pasien']; ?></span></td>
-                                    <?php endif; ?>
-                                    <!-- <td>
+                                    <tr>
+                                        <th scope="row"><?= $no++; ?></th>
+                                        <td><?= $data['name']; ?></td>
+                                        <td><?= $data['name']; ?></td>
+                                        <?php if ($data['status_antrian_pasien'] == 'sudah') : ?>
+                                            <td><span class="badge badge-success"><?= $data['status_antrian_pasien']; ?></span></td>
+                                        <?php elseif ($data['status_antrian_pasien'] == 'mulai') : ?>
+                                            <td><span class="badge badge-warning"><?= $data['status_antrian_pasien']; ?></span></td>
+                                        <?php else : ?>
+                                            <td><span class="badge badge-danger"><?= $data['status_antrian_pasien']; ?></span></td>
+                                        <?php endif; ?>
+                                        <!-- <td>
                                         <a href="" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                     </td> -->
-                                </tr>
+                                    </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

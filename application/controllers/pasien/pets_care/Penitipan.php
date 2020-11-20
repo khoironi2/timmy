@@ -60,6 +60,7 @@ class Penitipan extends CI_Controller
                 'id_paket_penitipan' => $this->input->post('id_paket_penitipan'),
                 'keterangan_tambahan_penitipan' => $this->input->post('keterangan_tambahan_penitipan'),
                 'total_harga_penitipan' => $this->input->post('total_harga_penitipan'),
+                'time_create_boking_penitipan' => date('Y-m-d H:i:s'),
             ];
 
             $this->db->insert('tbl_boking_penitipan', $data);
