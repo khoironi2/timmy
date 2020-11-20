@@ -37,10 +37,10 @@ class Profile extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('templates/topbar');
-            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar_pasien');
+            $this->load->view('templates/sidebar_pasien');
             $this->load->view('pasien/profile/index');
-            $this->load->view('templates/footer');
+            $this->load->view('templates/footer_pasien');
         } else {
             $email = $this->input->post('email');
             $data = [
