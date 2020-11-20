@@ -53,7 +53,7 @@ class Profile extends CI_Controller
             $this->db->update('tbl_users', $data);
 
             $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data user berhasil diubah !</div>');
-            redirect('admin/profile');
+            redirect('pasien/profile');
         }
     }
 }

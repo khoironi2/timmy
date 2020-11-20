@@ -9,7 +9,7 @@
         </div>
     </div>
 </div>
-<form action="<?= base_url('admin/settings/index'); ?>" method="POST" enctype="multipart/form-data">
+<form action="<?= base_url('pasien/profile/index'); ?>" method="POST" enctype="multipart/form-data">
     <div class="row">
         <?= $this->session->flashdata('message'); ?>
         <div class="col-md-8">

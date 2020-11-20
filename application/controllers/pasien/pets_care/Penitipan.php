@@ -23,6 +23,7 @@ class Penitipan extends CI_Controller
             'title' => 'Sistem informasi klinik pelayanan hewan',
             'halaman' => 'Data | Penitipan',
             'icon' => 'fas fa-door-open',
+            'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'penitipan' => $this->Penitipan_model->getAllMyPenitipan()
         ];
 
