@@ -48,6 +48,35 @@
                             Antrian Pasien
                         </a>
                     </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="metismenu-icon fas fa-swatchbook"></i>
+                            Paket
+                            <i class="metismenu-state-icon fas fa-angle-down caret-left"></i>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="<?= base_url('admin/paket/groming'); ?>">
+                                    <i class="metismenu-icon"></i>
+                                    Groming
+                                </a>
+                                <a href="<?= base_url('admin/paket/penitipan'); ?>">
+                                    <i class="metismenu-icon"></i>
+                                    Penitipan
+                                </a>
+                                <a href="<?= base_url('admin/paket/steril'); ?>">
+                                    <i class="metismenu-icon"></i>
+                                    Steril
+                                </a>
+                                <a href="<?= base_url('admin/paket/vaksin'); ?>">
+                                    <i class="metismenu-icon"></i>
+                                    Vaksin
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="app-sidebar__heading">Layanan Dokter</li>
                     <li>
                         <a href="<?= base_url('admin/layanan_dokter/jadwal_dokter'); ?>">
