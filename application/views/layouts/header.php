@@ -37,8 +37,12 @@
                             <nav>
                                 <ul>
                                     <li><a href="<?= base_url(); ?>">HOME</a></li>
-                                    <li><a href="<?= base_url('jadwal'); ?>">JADWAL DOKTER</a></li>
-                                    <li><a href="#">BOOKING</a>
+                                    <li><a href="<?= base_url('jasa'); ?>">Jasa</a></li>
+                                    <li><a href="<?= base_url('jadwal'); ?>">Jadwal</a></li>
+                                    <li><a href="<?= base_url('layanan'); ?>">Layanan</a></li>
+                                    <li><a href="<?= base_url('syarat'); ?>">Syarat</a></li>
+                                    <li><a href="<?= base_url('pengertian'); ?>">Pengertian</a></li>
+                                    <!-- <li><a href="#">BOOKING</a>
                                         <ul class="submenu">
                                             <li>
                                                 <a href="#">Boking Groming</a>
@@ -54,7 +58,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">ABOUT</a></li>
+                                    <li><a href="#">ABOUT</a></li> -->
                                 </ul>
                             </nav>
                         </div>
