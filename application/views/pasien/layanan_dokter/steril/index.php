@@ -14,7 +14,7 @@
                     <span class="btn-icon-wrapper pr-2 opacity-7">
                         <i class="fas fa-business-time fa-w-20"></i>
                     </span>
-                    Buttons
+                    + Steril Now
                 </a>
             </div>
         </div>
@@ -25,13 +25,14 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Info Vaksin
+                Info Steril
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="datatable">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Tanggal</th>
                             <th scope="col">Pemilik</th>
                             <th scope="col">Hewan</th>
                             <th scope="col">Paket</th>
@@ -44,6 +45,7 @@
                         <?php foreach ($boking as $data) : ?>
                             <tr>
                                 <th scope="row"><?= $no++; ?></th>
+                                <td><?= $data->time_create_boking_steril; ?></td>
                                 <td><?= $data->nama_pemilik; ?></td>
                                 <td><?= $data->nama_hewan_steril; ?></td>
                                 <td><?= $data->nama_paket_steril; ?></td>

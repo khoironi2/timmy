@@ -33,6 +33,12 @@ class Penitipan extends CI_Controller
         $this->load->view('admin/pets_care/penitipan/index');
         $this->load->view('templates/footer');
     }
+    public function cari()
+    {
+        $id_paket_penitipan = $_GET['id_paket_penitipan'];
+        $cari = $this->Paket_penitipan_model->cari($id_paket_penitipan)->result();
+        echo json_encode($cari);
+    }
 
     public function create()
     {
@@ -44,7 +50,7 @@ class Penitipan extends CI_Controller
             'users' => $this->db->get_where('tbl_users', ['level' => 'pasien'])->result_array(),
             'pakets' => $this->db->get('tbl_paket_penitpan')->result_array(),
         ];
-
+        $data['record'] =  $this->Paket_penitipan_model->tampil_data();
         $this->form_validation->set_rules('id_users_pet', 'pasien', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -59,8 +65,9 @@ class Penitipan extends CI_Controller
                 'nama_hewan_penitipan' => $this->input->post('nama_hewan_penitipan'),
                 'jumlah_hari_penitipan' => $this->input->post('jumlah_hari_penitipan'),
                 'id_paket_penitipan' => $this->input->post('id_paket_penitipan'),
-                'keterangan_tambahan_steril' => $this->input->post('keterangan_tambahan_steril'),
+                'keterangan_tambahan_penitipan' => $this->input->post('keterangan_tambahan_penitipan'),
                 'total_harga_penitipan' => $this->input->post('total_harga_penitipan'),
+                'time_create_boking_penitipan' => date('Y-m-d H:i:s'),
             ];
 
             $this->db->insert('tbl_boking_penitipan', $data);
@@ -111,7 +118,7 @@ class Penitipan extends CI_Controller
     public function destroy($id)
     {
         $this->db->delete('tbl_boking_penitipan', ['id_boking_penitipan' => $id]);
-        
+
         $this->session->set_flashdata('message', '<div class="alert alert-success">Sukses, Data Berhasil Dihapus.</div>');
         redirect('admin/pets_care/penitipan');
     }

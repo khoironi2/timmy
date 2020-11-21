@@ -34,6 +34,13 @@ class Groming extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function cari()
+    {
+        $id_paket_groming = $_GET['id_paket_groming'];
+        $cari = $this->Paket_groming_model->cari($id_paket_groming)->result();
+        echo json_encode($cari);
+    }
+
     public function total()
     {
         $data = [
@@ -56,7 +63,7 @@ class Groming extends CI_Controller
             'users' => $this->db->get_where('tbl_users', ['level' => 'pasien'])->result_array(),
             'pakets' => $this->db->get('tbl_paket_groming')->result_array()
         ];
-
+        $data['record'] =  $this->Paket_groming_model->tampil_data();
         $this->form_validation->set_rules('id_pasien', 'pasien', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -73,6 +80,7 @@ class Groming extends CI_Controller
                 'dijemput' => $this->input->post('dijemput'),
                 'keterangan_tambahan_groming' => $this->input->post('keterangan_tambahan_groming'),
                 'total_harga_groming' => $this->input->post('total_harga_groming'),
+                'time_create_boking_groming' => date('Y-m-d H:i:s'),
             ];
 
             $this->db->insert('tbl_boking_groming', $data);

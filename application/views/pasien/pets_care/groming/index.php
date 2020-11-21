@@ -26,6 +26,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Tanggal</th>
                                     <th scope="col">Pasien</th>
                                     <th scope="col">Hewan</th>
                                     <th scope="col">Paket</th>
@@ -40,6 +41,7 @@
                                 <?php foreach ($groming as $data) : ?>
                                     <tr>
                                         <th scope="row"><?= $no++; ?></th>
+                                        <td><?= $data->time_create_boking_groming; ?></td>
                                         <td><?= $data->name; ?></td>
                                         <td><?= $data->nama_hewan_groming; ?></td>
                                         <td><?= $data->nama_paket_groming; ?></td>

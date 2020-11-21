@@ -32,6 +32,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Tanggal</th>
                             <th scope="col">Pemilik</th>
                             <th scope="col">Hewan</th>
                             <th scope="col">Paket</th>
@@ -46,6 +47,7 @@
                         <?php foreach ($penitipan as $data) : ?>
                             <tr>
                                 <th scope="row"><?= $no++; ?></th>
+                                <td><?= $data->time_create_boking_penitipan; ?></td>
                                 <td><?= $data->name; ?></td>
                                 <td><?= $data->nama_hewan_penitipan; ?></td>
                                 <td><?= $data->nama_paket_penitipan; ?></td>
