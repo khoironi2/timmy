@@ -1,10 +1,10 @@
 <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(<?= base_url('assets/frontend') ?>/img/banner/auth.jpg);">
     <div class="container">
         <div class="breadcrumb-content text-center">
-            <h2 class="text-dark">Login / Register</h2>
+            <h2>Login / Register</h2>
             <ul>
-                <li><a class="text-dark" href="<?= base_url(); ?>">home</a></li>
-                <li class="text-dark">Login / Register</li>
+                <li><a href="<?= base_url(); ?>">home</a></li>
+                <li class="text-light shadow">Login / Register</li>
             </ul>
         </div>
     </div>

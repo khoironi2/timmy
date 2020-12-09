@@ -42,91 +42,6 @@
                             </a>
                         </li>
 
-<<<<<<< HEAD
-                    <li class="app-sidebar__heading">Layanan Pasien</li>
-                    <li>
-                        <a href="<?= base_url('admin/layanan_pasien/antrian_pasien'); ?>">
-                            <i class="metismenu-icon fas fa-pen-square"></i>
-                            Antrian Pasien
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="metismenu-icon fas fa-swatchbook"></i>
-                            Paket
-                            <i class="metismenu-state-icon fas fa-angle-down caret-left"></i>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="<?= base_url('admin/paket/groming'); ?>">
-                                    <i class="metismenu-icon"></i>
-                                    Groming
-                                </a>
-                                <a href="<?= base_url('admin/paket/penitipan'); ?>">
-                                    <i class="metismenu-icon"></i>
-                                    Penitipan
-                                </a>
-                                <a href="<?= base_url('admin/paket/steril'); ?>">
-                                    <i class="metismenu-icon"></i>
-                                    Steril
-                                </a>
-                                <a href="<?= base_url('admin/paket/vaksin'); ?>">
-                                    <i class="metismenu-icon"></i>
-                                    Vaksin
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="app-sidebar__heading">Layanan Dokter</li>
-                    <li>
-                        <a href="<?= base_url('admin/layanan_dokter/jadwal_dokter'); ?>">
-                            <i class="metismenu-icon fas fa-calendar-alt"></i>
-                            Jadwal Dokter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/layanan_dokter/vaksin'); ?>">
-                            <i class="metismenu-icon fas fa-syringe"></i>
-                            Vaksin
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/layanan_dokter/steril'); ?>">
-                            <i class="metismenu-icon fas fa-lungs-virus"></i>
-                            Steril
-                        </a>
-                    </li>
-                    <li class="app-sidebar__heading">Pets Care</li>
-                    <li>
-                        <a href="<?= base_url('admin/pets_care/groming'); ?>">
-                            <i class="metismenu-icon fas fa-paw"></i>
-                            Groming
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/pets_care/penitipan'); ?>">
-                            <i class="metismenu-icon fas fa-door-open"></i>
-                            Penitipan
-                        </a>
-                    </li>
-                    <li class="app-sidebar__heading">Riwayat</li>
-                    <li>
-                        <a href="<?= base_url('admin/riwayat/riwayat_rekam_medis'); ?>">
-                            <i class="metismenu-icon fas fa-user-md"></i>
-                            Riwayat Rekam Medis
-                        </a>
-                    </li>
-                    <li class="app-sidebar__heading">Settings</li>
-                    <li>
-                        <a href="<?= base_url('admin/settings/'); ?>">
-                            <i class="metismenu-icon fas fa-user"></i>
-                            Profile
-                        </a>
-                    </li>
-                </ul>
-=======
                         <li class="app-sidebar__heading">Layanan Pasien</li>
                         <li>
                             <a href="<?= base_url('admin/layanan_pasien/antrian_pasien'); ?>">
@@ -207,7 +122,6 @@
                         </li>
                     </ul>
                 </div>
->>>>>>> b3ba6a70329017c0e9efd4691a8fdc0a96311c74
             </div>
         </div>
     </div>
