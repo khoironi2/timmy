@@ -49,6 +49,12 @@
                                 Antrian Pasien
                             </a>
                         </li>
+                        <li>
+                            <a href="<?= base_url('dokter/layanan_pasien/rekam_medis'); ?>">
+                                <i class="metismenu-icon fas fa-pen-square"></i>
+                                Rekam Medis
+                            </a>
+                        </li>
                         <li class="app-sidebar__heading">Layanan Dokter</li>
                         <li>
                             <a href="<?= base_url('dokter/layanan_dokter/jadwal_dokter'); ?>">
