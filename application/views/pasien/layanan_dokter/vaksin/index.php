@@ -22,9 +22,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                Info Vaksin
-            </div>
+            <a href="" data-toggle="modal" data-target="#info">
+                <div class="card-header">
+                    Info Vaksin
+                </div>
+            </a>
             <div class="card-body">
                 <table class="table table-striped" id="datatable">
                     <thead>
@@ -221,3 +223,38 @@ foreach ($boking as $data) : ?>
     </div>
 <?php endforeach ?>
 <!-- end ikut antri -->
+
+<!-- Modal -->
+<div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> INFORMASI VAKSIN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <form action="" method="POST">
+                <?php foreach ($paketvaksin as $data) : ?>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1"><b><?= $data['nama_paket_vaksin'] ?></b> </label>
+                            <p><?= $data['keterangan_paket_vaksin'] ?></p>
+                            <b> Harga Rp. <?= number_format($data['harga_paket_vaksin'], 0, ',', '.'); ?></b>
+                        </div>
+
+                    </div>
+                <?php endforeach ?>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<!-- Full screen modal -->
