@@ -81,7 +81,7 @@ class Auth extends CI_Controller
             $errors = $this->form_validation->error_array();
             $this->session->set_flashdata('errors', $errors);
             $this->session->set_flashdata('input', $this->input->post());
-            redirect('/pendaftaran');
+            redirect('/auth');
         } else {
 
             $name = $this->input->post('name');
