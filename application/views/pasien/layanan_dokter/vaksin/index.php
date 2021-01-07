@@ -58,9 +58,13 @@
                                         <span class="badge badge-success">Selesai Administrasi </span>
                                     <?php elseif ($data->status_boking_vaksin == 'belum') : ?>
                                         <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
-                                        <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-danger">Visit Home</span></a>
+                                        <!-- <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-danger">Visit Home</span></a> -->
                                     <?php elseif ($data->status_boking_vaksin == 'antri') : ?>
                                         <span class="badge badge-warning">Sedang Antri</span>
+                                        <a href="<?= base_url('pasien/layanan_dokter/vaksin/cetak_antrian') ?>/<?= $data->id_boking_vaksin ?>">
+                                            <span class="badge badge-danger">Cetak Nomor Antri</span>
+                                        </a>
+
                                     <?php elseif ($data->status_boking_vaksin == 'waiting') : ?>
                                         <span class="badge badge-warning">Tunggu sampai anda dipanggil</span>
                                     <?php elseif ($data->status_boking_vaksin == 'giliran_anda') : ?>
@@ -123,9 +127,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Waktu Booking</label>
+                        <div class="col-sm-10">
+                            <input class="form-control-plaintext" name="time_create_boking_vaksin" type="datetime-local" id="time_create_boking_vaksin">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="id_dokter" class="col-sm-2 col-form-label">Dokter</label>
                         <div class="col-sm-10">
-                            <select name="id_dokter_vaksin" class="form-control select2" style="width: 100%;" id="id_dokter_vaksin" required multiple>
+                            <select name="id_dokter_vaksin" class="form-control select3" style="width: 100%;" id="select3" required multiple>
                                 <?php foreach ($dokter as $data) : ?>
                                     <option value="<?= $data['id_users']; ?>"><?= $data['name']; ?></option>
                                 <?php endforeach; ?>

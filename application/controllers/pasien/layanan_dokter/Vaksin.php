@@ -57,6 +57,7 @@ class Vaksin extends CI_Controller
             $id_paket_vaksin = $this->input->post('id_paket_vaksin');
             $id_dokter_vaksin = $this->input->post('id_dokter_vaksin');
             $total_harga_vaksin = $this->input->post('total_harga_vaksin');
+            $time_create_boking_vaksin = $this->input->post('time_create_boking_vaksin');
             $data = [
                 'nama_hewan_vaksin' => $nama_hewan_vaksin,
                 'id_pasien' => $id_pasien,
@@ -64,7 +65,7 @@ class Vaksin extends CI_Controller
                 'id_dokter_vaksin' => $id_dokter_vaksin,
                 'total_harga_vaksin' => $total_harga_vaksin,
                 'status_boking_vaksin'     => 'belum',
-                'time_create_boking_vaksin' => date('Y-m-d H:i:s')
+                'time_create_boking_vaksin' => $time_create_boking_vaksin,
             ];
             $insert = $this->Boking_vaksin_model->insert("tbl_boking_vaksin", $data);
             if ($insert) {
@@ -72,6 +73,35 @@ class Vaksin extends CI_Controller
                 redirect('pasien/layanan_dokter/vaksin');
             }
         }
+    }
+
+    public function cetak_antrian($id)
+    {
+        $this->load->library('dompdf_gen');
+
+        // $keyword1 = $this->input->post('keyword1');
+        // $keyword2 = $this->input->post('keyword2');
+        $data = [
+            // 'awal' =>  $keyword1,
+            // 'akhir' => $keyword2,
+            // 'totalpenjualan' => $this->Steril_model->getAllSteril($keyword1, $keyword2),
+            // 'totalpenjualan' => $this->Penjualan_model->getTotalPenjualan(),
+            'logo' => '<img src="assets/img/sample/apple.png" alt="" class="mr-3" height="50">',
+            'gambar' => 'assets/img/perbaikan/'
+        ];
+        $data['antrian'] = $this->Antrian_pasien_model->getAllVaksinID($id);
+        $this->load->view('pasien/layanan_pasien/antrian_pasien/cetak/Vaksin', $data);
+        $customPaper = array(0, 0, 300, 300);
+        // $dompdf->set_paper($customPaper);
+
+        // $paper_size = 'b5';
+        $orientation = 'potrait';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($customPaper, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("cetak.pdf", ['Attachment' => 0]);
     }
 
     public function updateStatusW($id)
