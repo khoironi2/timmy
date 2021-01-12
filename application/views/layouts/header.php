@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-5">
                         <div class="logo pt-39">
-                            <a href="<?= base_url(); ?>"><h4 style="font-size: x-large;">Timmy Fetcare</h4></a>
+                            <a href="<?= base_url(); ?>"><h4 style="font-size: x-large;">Timmy Vetcare</h4></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-7 d-none d-lg-block">
@@ -121,7 +121,7 @@
                                                     <li><a href="shop-page.html">Cheese</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Fishs Food</a>
+                                            <li><a href="#">Fish Food</a>
                                                 <ul>
                                                     <li><a href="shop-page.html">Rice</a></li>
                                                     <li><a href="shop-page.html">Veggies</a></li>
