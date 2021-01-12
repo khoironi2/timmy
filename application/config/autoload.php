@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Auth_model', 'Users_model', 'Dokter_model', 'Jadwal_dokter_model', 'Pasien_model', 'Vaksin_model', 'Steril_model', 'Groming_model', 'Paket_vaksin_model', 'Boking_vaksin_model', 'Paket_steril_model', 'Boking_steril_model', 'Antrian_pasien_model', 'Visit_pasien_model', 'Penitipan_model', 'Paket_groming_model', 'Paket_penitipan_model', 'Dashboard_model');
+$autoload['model'] = array('Auth_model', 'Users_model', 'Dokter_model', 'Jadwal_dokter_model', 'Pasien_model', 'Vaksin_model', 'Steril_model', 'Groming_model', 'Paket_vaksin_model', 'Boking_vaksin_model', 'Paket_steril_model', 'Boking_steril_model', 'Antrian_pasien_model', 'Visit_pasien_model', 'Penitipan_model', 'Paket_groming_model', 'Paket_penitipan_model', 'Dashboard_model', 'Rekam_medis_model');

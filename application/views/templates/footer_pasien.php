@@ -25,6 +25,8 @@
         $('#datatable').DataTable();
 
         $('.select2').select2();
+        $('#select3').select2();
+        $('.select3').select2();
     });
 </script>
 <script>
