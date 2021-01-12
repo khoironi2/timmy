@@ -14,7 +14,7 @@
                     <span class="btn-icon-wrapper pr-2 opacity-7">
                         <i class="fas fa-business-time fa-w-20"></i>
                     </span>
-                    + Steril Now
+                    Reservasi Steril
                 </a>
             </div>
         </div>
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="id_paket_vaksin" class="col-sm-2 col-form-label">Paket Vaksin</label>
+                        <label for="id_paket_vaksin" class="col-sm-2 col-form-label">Paket Steril</label>
                         <div class="col-sm-10">
                             <input list="data_santri" type="text" name="id_paket_steril" id="id_paket_steril" class="form-control" placeholder="paket vaksin" onchange="return autofillSteril();">
                         </div>

@@ -7,8 +7,17 @@
                     </div>
                     <div><?= $halaman; ?></div>
                 </div>
+                <div class="page-title-actions">
+                    <div class="d-inline-block dropdown"> 
+                    <a href="<?= base_url('pasien/pets_care/groming/create'); ?>" class="btn-shadow btn btn-info">
+                        <span clss="btn-icon-wrapper pr-2 opacity-7">
+                            <i class="fas fa-business-time fa-w-20"></i>
+                        </span>
+                        Reservasi Grooming
+                    </a>
+                </div>
 
-                <div id="tampil" class="page-title-actions">
+
 
                 </div>
 
@@ -19,7 +28,7 @@
                 <?= $this->session->flashdata('message'); ?>
                 <div class="card">
                     <div class="card-header">
-                        Info Groming
+                        Info Grooming
                     </div>
                     <div class="card-body">
                         <table class="table table-striped" id="datatable">

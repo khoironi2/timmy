@@ -15,7 +15,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                Form groming now
+                Form grooming now
             </div>
             <div class="card-body">
                 <form autocomplete="off" action="<?= base_url('pasien/pets_care/groming/create'); ?>" method="POST">
@@ -24,11 +24,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nama_hewan_groming">Hewan Groming</label>
+                        <label for="nama_hewan_groming">Hewan Grooming</label>
                         <input type="text" class="form-control" id="nama_hewan_groming" name="nama_hewan_groming" required>
                     </div>
                     <div class="form-group">
-                        <label for="id_paket_vaksin">Paket Groming</label>
+                        <label for="id_paket_vaksin">Paket Grooming</label>
                         <input list="data_santri" type="text" name="id_paket_groming" id="id_paket_groming" class="form-control" placeholder="paket groming" onchange="return autofillGroming();">
                     </div>
                     <div class="form-group">

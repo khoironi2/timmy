@@ -42,14 +42,14 @@
                                         <i class="fas fa-angle-down ml-2 opacity-8"></i>
                                     </a>
                                     <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                        <a href="<?= base_url('dokter/profile') ?>" class="dropdown-item">Profile</a>
+                                        <a href="<?= base_url('dokter/profile') ?>" class="dropdown-item">Profile </a>
                                         <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">Logout</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
                                 <div class="widget-heading">
-                                    <?= $user['name']; ?>
+                                    <?= $user['email']; ?>
                                 </div>
                             </div>
                         </div>

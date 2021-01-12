@@ -72,7 +72,7 @@
                         <li>
                             <a href="<?= base_url('dokter/riwayat/riwayat_rekam_medis'); ?>">
                                 <i class="metismenu-icon fas fa-user-md"></i>
-                                Riwayat Rekam Medis
+                                Riwayat Rekam Medis 
                             </a>
                         </li>
                         <li>
