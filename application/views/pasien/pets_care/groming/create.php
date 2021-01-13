@@ -28,6 +28,10 @@
                         <input type="text" class="form-control" id="nama_hewan_groming" name="nama_hewan_groming" required>
                     </div>
                     <div class="form-group">
+                        <label for="nama_hewan_groming">Tanggal Boking</label>
+                        <input type="datetime-local" class="form-control" id="time_create_boking_groming" name="time_create_boking_groming" required>
+                    </div>
+                    <div class="form-group">
                         <label for="id_paket_vaksin">Paket Grooming</label>
                         <input list="data_santri" type="text" name="id_paket_groming" id="id_paket_groming" class="form-control" placeholder="paket groming" onchange="return autofillGroming();">
                     </div>
