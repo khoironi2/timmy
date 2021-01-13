@@ -8,14 +8,14 @@
                     <div><?= $halaman; ?></div>
                 </div>
                 <div class="page-title-actions">
-                    <div class="d-inline-block dropdown"> 
-                    <a href="<?= base_url('pasien/pets_care/groming/create'); ?>" class="btn-shadow btn btn-info">
-                        <span clss="btn-icon-wrapper pr-2 opacity-7">
-                            <i class="fas fa-business-time fa-w-20"></i>
-                        </span>
-                        Reservasi Grooming
-                    </a>
-                </div>
+                    <div class="d-inline-block dropdown">
+                        <a href="<?= base_url('pasien/pets_care/groming/create'); ?>" class="btn-shadow btn btn-info">
+                            <span clss="btn-icon-wrapper pr-2 opacity-7">
+                                <i class="fas fa-business-time fa-w-20"></i>
+                            </span>
+                            Reservasi Grooming
+                        </a>
+                    </div>
 
 
 
@@ -35,7 +35,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Tanggal</th>
+                                    <th scope="col">Tanggal Boking</th>
                                     <th scope="col">Pasien</th>
                                     <th scope="col">Hewan</th>
                                     <th scope="col">Paket</th>
