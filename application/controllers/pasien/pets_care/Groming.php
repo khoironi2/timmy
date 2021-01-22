@@ -24,7 +24,8 @@ class Groming extends CI_Controller
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'halaman' => 'Data | Groming',
             'icon' => 'fas fa-paw',
-            'groming' => $this->Groming_model->getAllMyGroming(),
+            // 'groming' => $this->Groming_model->getAllMyGroming(),
+            'groming' => $this->db->get('tbl_paket_groming')->result_array(),
             'total' => $this->Groming_model->getGromingReady()
         ];
 
@@ -34,6 +35,24 @@ class Groming extends CI_Controller
         $this->load->view('pasien/pets_care/groming/index');
         $this->load->view('templates/footer_pasien');
     }
+
+    // public function index()
+    // {
+    //     $data = [
+    //         'title' => 'Sistem informasi klinik pelayanan hewan',
+    //         'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
+    //         'halaman' => 'Data | Groming',
+    //         'icon' => 'fas fa-paw',
+    //         'groming' => $this->Groming_model->getAllMyGroming(),
+    //         'total' => $this->Groming_model->getGromingReady()
+    //     ];
+
+    //     $this->load->view('templates/header', $data);
+    //     $this->load->view('templates/topbar_pasien');
+    //     $this->load->view('templates/sidebar_pasien');
+    //     $this->load->view('pasien/pets_care/groming/index');
+    //     $this->load->view('templates/footer_pasien');
+    // }
     public function total()
     {
         $data = [
