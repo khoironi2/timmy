@@ -22,7 +22,7 @@
                             <th>Nama</th>
                             <th>Tlp</th>
                             <td>Tanggal</td>
-                            <th>Actions</th>
+                            <!-- <th>Actions</th> -->
                         </tr>
                     </thead>
                     <tfoot>
@@ -31,7 +31,7 @@
                             <th>Nama</th>
                             <th>Tlp</th>
                             <td>Tanggal</td>
-                            <th>Actions</th>
+                            <!-- <th>Actions</th> -->
                         </tr>
                     </tfoot>
                     <tbody>
@@ -42,9 +42,9 @@
                                 <td><?= $invoice['invoices_name'] ?></td>
                                 <td><?= $invoice['invoices_tlp'] ?></td>
                                 <td><?= $invoice['created_at'] ?></td>
-                                <td>
+                                <!-- <td>
                                     <a href="<?= base_url('admin/invoice/' . $invoice['id_invoices']); ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i>Detail</a>
-                                </td>
+                                </td> -->
                             </tr>
                             
                         <?php endforeach; ?>
