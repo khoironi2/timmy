@@ -16,7 +16,6 @@ class Groming extends CI_Controller
             }
         }
     }
-
     public function index()
     {
         $data = [
@@ -26,21 +25,18 @@ class Groming extends CI_Controller
             'icon' => 'fas fa-paw',
             'groming' => $this->Groming_model->getAllGroming()
         ];
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
         $this->load->view('admin/pets_care/groming/index');
         $this->load->view('templates/footer');
     }
-
     public function cari()
     {
         $id_paket_groming = $_GET['id_paket_groming'];
         $cari = $this->Paket_groming_model->cari($id_paket_groming)->result();
         echo json_encode($cari);
     }
-
     public function total()
     {
         $data = [
