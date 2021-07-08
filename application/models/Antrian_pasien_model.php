@@ -19,7 +19,7 @@ class Antrian_pasien_model extends CI_model
     }
     public function getAllSterilID($id)
     {
-        $this->db->select('tbl_antrian_pasien.nomor_antrian_pasien,tbl_antrian_pasien.id_antrian_pasien,tbl_antrian_pasien.status_antrian_pasien,tbl_users.name,dok.name as dokter,tbl_boking_steril.nama_hewan_steril,tbl_paket_steril.nama_paket_steril');
+        $this->db->select('dok.name as nama_dokter,tbl_boking_steril.time_create_boking_steril,tbl_antrian_pasien.nomor_antrian_pasien,tbl_antrian_pasien.id_antrian_pasien,tbl_antrian_pasien.status_antrian_pasien,tbl_users.name,dok.name as dokter,tbl_boking_steril.nama_hewan_steril,tbl_paket_steril.nama_paket_steril');
         $this->db->from('tbl_antrian_pasien');
         $this->db->join('tbl_users', 'tbl_users.id_users=tbl_antrian_pasien.id_pasien');
         $this->db->join('tbl_users as dok', 'dok.id_users=tbl_antrian_pasien.id_dokter');
@@ -31,7 +31,7 @@ class Antrian_pasien_model extends CI_model
 
         $result = $this->db->get();
 
-        return $result->result();
+        return $result->row_array();
     }
     public function getAllVaksinID($id)
     {

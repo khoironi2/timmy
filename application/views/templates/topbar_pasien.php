@@ -36,9 +36,9 @@
                     <div class="widget-content p-0">
                         <div class="widget-content-wrapper">
                             <div class="widget-content-left">
-                                <div class="btn-group mr-4">
+                                <!-- <div class="btn-group mr-4">
                                     <a href="<?= base_url('pasien/pets_care/groming_cart/cart'); ?>">Keranang groming <span class="badge badge-info ml-2"><?= $this->cart->total_items(); ?></span></a>
-                                </div>
+                                </div> -->
                                 <div class="btn-group">
                                     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                         <img width="42" class="rounded-circle" src="<?= base_url('assets/img/users/' . $user['gambar_users']); ?>" alt="">

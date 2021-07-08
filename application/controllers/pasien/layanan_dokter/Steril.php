@@ -36,6 +36,34 @@ class Steril extends CI_Controller
         $this->load->view('pasien/layanan_dokter/steril/index');
         $this->load->view('templates/footer_pasien');
     }
+    public function cetak_antrian($id)
+    {
+        $this->load->library('dompdf_gen');
+
+        // $keyword1 = $this->input->post('keyword1');
+        // $keyword2 = $this->input->post('keyword2');
+        $data = [
+            // 'awal' =>  $keyword1,
+            // 'akhir' => $keyword2,
+            // 'totalpenjualan' => $this->Steril_model->getAllSteril($keyword1, $keyword2),
+            // 'totalpenjualan' => $this->Penjualan_model->getTotalPenjualan(),
+            'logo' => '<img src="assets/img/sample/apple.png" alt="" class="mr-3" height="50">',
+            'gambar' => 'assets/img/perbaikan/'
+        ];
+        $data['antrian'] = $this->Antrian_pasien_model->getAllSterilID($id);
+        $this->load->view('pasien/layanan_pasien/antrian_pasien/cetak/Steril', $data);
+        $customPaper = array(0, 0, 300, 300);
+        // $dompdf->set_paper($customPaper);
+
+        // $paper_size = 'b5';
+        $orientation = 'potrait';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($customPaper, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("cetak.pdf", ['Attachment' => 0]);
+    }
 
     public function cari()
     {

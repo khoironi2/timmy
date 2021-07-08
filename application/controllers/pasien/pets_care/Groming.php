@@ -24,8 +24,8 @@ class Groming extends CI_Controller
             'user' => $this->db->get_where('tbl_users', ['email' => $this->session->userdata('email')])->row_array(),
             'halaman' => 'Data | Groming',
             'icon' => 'fas fa-paw',
-            // 'groming' => $this->Groming_model->getAllMyGroming(),
-            'groming' => $this->db->get('tbl_paket_groming')->result_array(),
+            'groming' => $this->Groming_model->getAllMyGroming(),
+            // 'groming' => $this->db->get('tbl_paket_groming')->result_array(),
             'total' => $this->Groming_model->getGromingReady()
         ];
 

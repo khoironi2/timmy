@@ -113,13 +113,13 @@
                                 Paket penitipan
                             </a>
                         </li>
-                        <li class="app-sidebar__heading">Invoice</li>
-                        <li>
+                        <!-- <li class="app-sidebar__heading">Invoice</li> -->
+                        <!-- <li>
                             <a href="<?= base_url('admin/invoice/'); ?>">
                                 <i class="metismenu-icon fas fa-file-invoice-dollar"></i>
                                 Invoice
                             </a>
-                        </li>
+                        </li> -->
                         <li class="app-sidebar__heading">Settings</li>
                         <li>
                             <a href="<?= base_url('admin/profile/'); ?>">

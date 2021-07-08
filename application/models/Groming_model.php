@@ -18,7 +18,7 @@ class Groming_model extends CI_Model
         $this->db->join('tbl_users as user', 'user.id_users=tbl_boking_groming.id_pasien');
         $this->db->join('tbl_paket_groming as paketgrom', 'paketgrom.id_paket_groming=tbl_boking_groming.id_paket_groming');
         $this->db->where('tbl_boking_groming.id_pasien', $this->session->userdata('id_users'));
-        $this->db->order_by('tbl_boking_groming.id_boking_groming', 'desc');
+        $this->db->order_by('tbl_boking_groming.id_boking_groming', 'DESC');
         $result = $this->db->get();
 
         return $result->result();

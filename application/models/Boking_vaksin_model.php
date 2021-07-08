@@ -22,6 +22,7 @@ class Boking_vaksin_model extends CI_model
         $this->db->join('tbl_users as dokter', 'dokter.id_users=tbl_boking_vaksin.id_dokter_vaksin');
         $this->db->join('tbl_paket_vaksin as paketvaksin', 'paketvaksin.id_paket_vaksin=tbl_boking_vaksin.id_paket_vaksin');
         $this->db->where('tbl_boking_vaksin.id_pasien', $this->session->userdata('id_users'));
+        $this->db->order_by('tbl_boking_vaksin.id_boking_vaksin', 'desc');
 
         $result = $this->db->get();
 

@@ -22,7 +22,7 @@ class Boking_steril_model extends CI_model
         $this->db->join('tbl_users as dokter', 'dokter.id_users=tbl_boking_steril.id_dokter_steril');
         $this->db->join('tbl_paket_steril as paketsteril', 'paketsteril.id_paket_steril=tbl_boking_steril.id_paket_steril');
         $this->db->where('tbl_boking_steril.id_users_pet', $this->session->userdata('id_users'));
-
+        $this->db->order_by('tbl_boking_steril.id_boking_steril', 'desc');
         $result = $this->db->get();
 
         return $result->result();
@@ -47,7 +47,7 @@ class Boking_steril_model extends CI_model
         $this->db->join('tbl_users as dokter', 'dokter.id_users=tbl_boking_steril.id_dokter_steril');
         $this->db->join('tbl_paket_steril as paketsteril', 'paketsteril.id_paket_steril=tbl_boking_steril.id_paket_steril');
         $this->db->where('tbl_boking_steril.id_dokter_steril', $this->session->userdata('id_users'));
-
+        $this->db->order_by('tbl_boking_steril.id_boking_steril', 'desc');
         $result = $this->db->get();
 
         return $result->result();

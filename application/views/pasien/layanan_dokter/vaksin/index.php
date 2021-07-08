@@ -58,7 +58,9 @@
                                         <span class="badge badge-success">Selesai Administrasi </span>
                                     <?php elseif ($data->status_boking_vaksin == 'belum') : ?>
                                         <a data-toggle="modal" data-target="#exampleModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-warning">Ikut Antrian</span></a>
-                                        <!-- <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-danger">Visit Home</span></a> -->
+                                        <!-- <a data-toggle="modal" data-target="#visitModal<?= $data->id_boking_vaksin ?>"><span class=" badge badge-danger">Visit Hsome</span></a> -->
+                                        <!-- <a href="<?= base_url('pasien/layanan_dokter/vaksin/cetak_antrian') ?>/<?= $data->id_boking_vaksin ?>"> -->
+                                        <!-- <span class="badge badge-danger">Cetak Nomor Antri</span> -->
                                     <?php elseif ($data->status_boking_vaksin == 'antri') : ?>
                                         <span class="badge badge-warning">Sedang Antri</span>
                                         <a href="<?= base_url('pasien/layanan_dokter/vaksin/cetak_antrian') ?>/<?= $data->id_boking_vaksin ?>">

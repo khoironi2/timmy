@@ -67,10 +67,10 @@ class Vaksin extends CI_Controller
         $client = $this->Boking_vaksin_model->getPById($id);
         $status_client = "";
 
-        if ($client->status_boking_vaksin == "waiting") {
-            $status_client = "giliran_anda";
+        if ($client->status_boking_vaksin == "antri") {
+            $status_client = "mulai";
         } else {
-            $status_client = "giliran_anda";
+            $status_client = "mulai";
         }
 
         $data = array(
@@ -79,14 +79,14 @@ class Vaksin extends CI_Controller
         );
         $data1 = array(
             'id_status_antrian'         => $id,
-            'status_antrian_pasien'     => 'giliran_anda',
+            'status_antrian_pasien'     => 'mulai',
             'time_update_antrian' => date('Y-m-d H:i:s')
         );
 
         $this->Boking_vaksin_model->updateData($id, $data);
         $this->Antrian_pasien_model->update($id, $data1);
 
-        redirect(site_url('dokter/layanan_dokter/vaksin'));
+        redirect(site_url('admin/layanan_dokter/vaksin'));
     }
     public function updateStatusPeriksa($id)
     {
